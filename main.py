@@ -12,6 +12,7 @@ du.configure_upload(app=app, folder="uploaded_files")
 
 file = None
 dataset_is_clean = False
+network_creator = NetworkCreation.NetworkCreator()
 
 
 app.layout = html.Div(
@@ -19,13 +20,13 @@ app.layout = html.Div(
         # NAVIGATION BAR
         html.Div(
             children=[
-                dcc.Link('Home', href='/', style={'margin': '10px', 'font-size': '30px'}),
-                dcc.Link('Import Data', href='/Import', style={'margin': '10px', 'font-size': '30px'}),
-                dcc.Link('Data Summary and Cleaning', href='/Cleaning', style={'margin': '10px', 'font-size': '30px'}),
+                dcc.Link('Home', href='/', style={'margin': '10px', 'font-size': '20px'}),
+                dcc.Link('Import Data', href='/Import', style={'margin': '10px', 'font-size': '20px'}),
+                dcc.Link('Data Summary and Cleaning', href='/Cleaning', style={'margin': '10px', 'font-size': '20px'}),
                 dcc.Link('Data Visualisation and Graph Metrics', href='Visualisation',
-                         style={'margin': '10px', 'font-size': '30px'}),
-                html.Img(src="https://pbs.twimg.com/media/FRXCr36XwAcpQop?format=jpg&name=large", width='100px',
-                         height='100px', style={'position': 'absolute', 'left': '10px'})
+                         style={'margin': '10px', 'font-size': '20px'}),
+                html.Img(src="https://pbs.twimg.com/media/FRXCr36XwAcpQop?format=jpg&name=large", width='50px',
+                         height='50px', style={'position': 'absolute', 'left': '10px'})
             ],
             style={
                 'width': '100vw',
@@ -219,6 +220,7 @@ elements = []
 # VISUALISATION
 def get_visualisation_page():
     global file
+    global network_creator
     if file is None:
         return [
             html.H1("No dataset has been imported, please go to the \"Import Data\" page and import a dataset",
@@ -226,36 +228,7 @@ def get_visualisation_page():
         ]
     else:
         return [
-            cyto.Cytoscape(id='main-graph',
-                           elements=elements,
-                           style={'width': '50vw', 'height': '50vw', 'background-color': 'white'},
-                           stylesheet=[
-                               {
-                                   'selector': 'edge',
-                                   'style': {
-                                       'target-arrow-shape': 'triangle',
-                                       'target-arrow-color': 'black',
-                                       'curve-style': 'bezier'
-                                   }
-                               },
-                               {
-                                   'selector': 'node',
-                                   'style': {
-                                       'label': 'data(label)'
-                                   }
-
-                               }
-
-
-                           ],
-                           layout={
-                               'name': 'cose',
-                               'gravity': '0.1',
-                               'idealEdgeLength': '100',
-                               'nodeRepulsion': '400'
-                           }
-
-                           ),
+            network_creator.get_cytoscape_graph('main-graph')
 
         ]
 
@@ -298,8 +271,11 @@ def uploaded(status: du.UploadStatus):
         global file
         file = pd.read_csv(status.latest_file)
         file.columns = [x.lower() for x in file.columns]
+        global network_creator
+        network_creator.initialise(file)
         global elements
-        elements = NetworkCreation.create_nodes_and_edges(file)
+        elements = network_creator.get_cytoscape_nodes() + network_creator.get_cytoscape_edges()
+
         return "THE FILE HAS BEEN UPLOADED"
 
 
