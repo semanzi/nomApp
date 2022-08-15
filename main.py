@@ -228,11 +228,20 @@ def get_visualisation_page():
         ]
     else:
         return [
-            network_creator.get_cytoscape_graph('main-graph')
+            network_creator.get_cytoscape_graph('main-graph'),
+            dcc.DatePickerRange(style={'width': '25vw'})
+
 
         ]
 
 
+# 404 PAGE NOT FOUND
+def get_404_not_found_page():
+    return [
+        html.H1("ERROR 404: PAGE DOES NOT EXIST", style={'text-align': 'center', 'font-size': '100px'})
+
+
+    ]
 
 
 
@@ -259,7 +268,7 @@ def change_page(pathname):
         return get_visualisation_page()
     else:
         # 404 NOT FOUND
-        pass
+        return get_404_not_found_page()
 
 
 @du.callback(
