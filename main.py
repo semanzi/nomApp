@@ -2,7 +2,6 @@ import dash
 from dash import html, dcc, Input, Output, State, dash_table
 import dash_uploader as du
 import pandas as pd
-import dash_cytoscape as cyto
 import NetworkCreation
 from datetime import datetime, date
 
@@ -230,7 +229,8 @@ def get_visualisation_page():
         ]
     else:
         return [
-            dcc.DatePickerRange(id='date_picker', style={'width': '25vw'}),
+            dcc.DatePickerRange(id='date_picker', style={'width': '25vw'}, display_format='DD/MM/YYYY'),
+            dcc.RangeSlider(id='date_slice_picker', min=0, max=0, step=1, allowCross=False),
             network1.get_cytoscape_graph('main_graph'),
             html.Button("Toggle in/out", id='toggle', style={'width': '15vw', 'height': '10vw'}),
             html.H1(id='in/out_text', children=toggle_value),
@@ -247,7 +247,6 @@ def get_404_not_found_page():
 
 
     ]
-
 
 
 
@@ -297,6 +296,8 @@ def uploaded(status: du.UploadStatus):
     Output(component_id='main_graph', component_property='elements'),
     Output(component_id='sub_graph', component_property='elements'),
     Output(component_id='in/out_text', component_property='children'),
+    Output(component_id='date_slice_picker', component_property='min'),
+    Output(component_id='date_slice_picker', component_property='max'),
     Input(component_id='date_picker', component_property='start_date'),
     Input(component_id='date_picker', component_property='end_date'),
     Input(component_id='main_graph', component_property='tapNodeData'),
@@ -313,6 +314,10 @@ def update_graphs(start_date_: str, end_date_: str, data, btn):
     else:
         end_date = date(day=1, month=1, year=9999)
 
+    days_between_dates = (end_date - start_date).days
+    if days_between_dates > 365:
+        days_between_dates = 365
+
     network1.create_cytoscape_nodes_and_edges(all_nodes_and_edges=False, start_date=start_date, end_date=end_date)
 
     if data:
@@ -327,7 +332,7 @@ def update_graphs(start_date_: str, end_date_: str, data, btn):
         else:
             toggle_value = 'out'
 
-    return network1.get_cytoscape_nodes() + network1.get_cytoscape_edges(), network1.get_specific_node_elements(toggle_value), toggle_value
+    return network1.get_cytoscape_nodes() + network1.get_cytoscape_edges(), network1.get_specific_node_elements(toggle_value), toggle_value, 0, days_between_dates
 
 
 if __name__ == '__main__':

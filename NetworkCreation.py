@@ -11,7 +11,7 @@ import math
 # radius: radius of circle
 # RETURN: list of nodes in radial layout, in format {'data': {'id': '', 'label': ''}, 'position': {'x': '', 'y': ''}}
 def get_radial_layout(node_id, nodes_, centre, radius):
-    nodes = [{'data': {'id': str(node_id), 'label': str(node_id)}, 'position': {'x': centre[0], 'y': centre[1]}}]
+    nodes = [{'data': {'id': str(node_id), 'label': str(node_id)}, 'position': {'x': centre[0], 'y': centre[1]}, 'classes': 'selected'}]
 
     num_of_nodes = len(nodes_)
     angle_count = 0
@@ -227,12 +227,22 @@ class NetworkCreator:
                                       }
 
                                   },
+                                  {
+                                      'selector': '.selected',
+                                      'style': {
+                                          'background-color': 'green'
+                                      }
+
+
+                                  },
+
 
                               ],
                               style={
                                   'width': '25vw',
                                   'height': '25vw',
-                                  'background-color': 'white'
+                                  'background-color': 'white',
+                                  'border': 'solid'
                               }
                               )
 
