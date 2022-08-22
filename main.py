@@ -2,7 +2,8 @@ import dash
 from dash import html, dcc, Input, Output, State, dash_table
 import dash_uploader as du
 import pandas as pd
-import NetworkCreation
+from NetworkCreation import NetworkCreator
+from DateSlider import DateSlider
 from datetime import datetime, date
 
 app = dash.Dash(__name__, suppress_callback_exceptions=True)
@@ -12,7 +13,7 @@ du.configure_upload(app=app, folder="uploaded_files")
 
 file = None
 dataset_is_clean = False
-network1 = NetworkCreation.NetworkCreator()
+network1 = NetworkCreator()
 toggle_value = 'out'
 
 app.layout = html.Div(
@@ -216,6 +217,7 @@ def get_cleaning_page():
         ]
 
 elements = []
+slider = DateSlider(start_date=date(day=23, month=5, year=2009), end_date=date(day=2, month=8, year=2014), slice_size=1, slice_resolution='Month')
 
 # VISUALISATION
 def get_visualisation_page():
@@ -230,7 +232,7 @@ def get_visualisation_page():
     else:
         return [
             dcc.DatePickerRange(id='date_picker', style={'width': '25vw'}, display_format='DD/MM/YYYY'),
-            dcc.RangeSlider(id='date_slice_picker', min=0, max=0, step=1, allowCross=False),
+            slider.get_slider(),
             network1.get_cytoscape_graph('main_graph'),
             html.Button("Toggle in/out", id='toggle', style={'width': '15vw', 'height': '10vw'}),
             html.H1(id='in/out_text', children=toggle_value),
@@ -286,24 +288,50 @@ def uploaded(status: du.UploadStatus):
         file.columns = [x.lower() for x in file.columns]
         global network1
         network1.initialise(file)
+        print(network1.get_degree_centrality('CRHT'))
         global elements
         elements = network1.get_cytoscape_nodes() + network1.get_cytoscape_edges()
 
         return "THE FILE HAS BEEN UPLOADED"
 
 
+# Deal with toggling in/out of specific node graph
 @app.callback(
-    Output(component_id='main_graph', component_property='elements'),
     Output(component_id='sub_graph', component_property='elements'),
     Output(component_id='in/out_text', component_property='children'),
+    Input(component_id='main_graph', component_property='tapNodeData'),
+    Input(component_id='toggle', component_property='n_clicks')
+)
+def update_selected_node_graph(data, button):
+    print(data)
+    # Toggle button was pressed
+    global toggle_value
+    if toggle_value == 'out':
+        toggle_value = 'in'
+    else:
+        toggle_value = 'out'
+
+    global network1
+    if data:
+        if data is None:
+            # Use previous selected node
+            pass
+        else:
+            # New node selected
+            network1.set_selected_node(str(data['id']))
+
+    return network1.get_specific_node_elements(toggle_value), toggle_value
+
+
+
+@app.callback(
+    Output(component_id='main_graph', component_property='elements'),
     Output(component_id='date_slice_picker', component_property='min'),
     Output(component_id='date_slice_picker', component_property='max'),
     Input(component_id='date_picker', component_property='start_date'),
     Input(component_id='date_picker', component_property='end_date'),
-    Input(component_id='main_graph', component_property='tapNodeData'),
-    Input(component_id='toggle', component_property='n_clicks')
 )
-def update_graphs(start_date_: str, end_date_: str, data, btn):
+def update_graphs(start_date_: str, end_date_: str):
     if start_date_ is not None:
         start_date = datetime.strptime(start_date_, "%Y-%m-%d").date()
     else:
@@ -318,21 +346,11 @@ def update_graphs(start_date_: str, end_date_: str, data, btn):
     if days_between_dates > 365:
         days_between_dates = 365
 
+    global network1
     network1.create_cytoscape_nodes_and_edges(all_nodes_and_edges=False, start_date=start_date, end_date=end_date)
+    update_selected_node_graph(None, 0)
 
-    if data:
-        # A node has been pressed
-        network1.set_selected_node(str(data['id']))
-
-    if dash.callback_context.triggered_id == 'toggle':
-        # Toggle button was pressed
-        global toggle_value
-        if toggle_value == 'out':
-            toggle_value = 'in'
-        else:
-            toggle_value = 'out'
-
-    return network1.get_cytoscape_nodes() + network1.get_cytoscape_edges(), network1.get_specific_node_elements(toggle_value), toggle_value, 0, days_between_dates
+    return network1.get_cytoscape_nodes() + network1.get_cytoscape_edges(), 0, days_between_dates
 
 
 if __name__ == '__main__':

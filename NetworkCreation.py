@@ -33,8 +33,6 @@ class NetworkCreator:
     full_cytoscape_edges = None
     cytoscape_nodes = None
     cytoscape_edges = None
-    networkx_nodes = None
-    networkx_edges = None
     networkx_graph = None
     adjacency_matrix = None
     selected_node = None
@@ -47,12 +45,18 @@ class NetworkCreator:
         self.dataset = dataset
         self.services = self.get_services()
         self.create_adjacency_matrix()
-        self.create_cytoscape_nodes_and_edges(all_nodes_and_edges=True, start_date=datetime.date(day=1, month=1, year=2017),
-                                              end_date=datetime.date(day=1, month=1, year=2022))
+        self.create_cytoscape_nodes_and_edges(all_nodes_and_edges=True,
+                                              start_date=datetime.date(day=1, month=1, year=2000),
+                                              end_date=datetime.date(day=1, month=1, year=2000))
         self.full_cytoscape_nodes = self.cytoscape_nodes
         self.full_cytoscape_edges = self.cytoscape_edges
-
         self.create_networkx_nodes_and_edges()
+
+    #def update_graph(self):
+
+
+
+
 
     def get_services(self):
         return self.dataset['service'].drop_duplicates().tolist()
@@ -267,14 +271,35 @@ class NetworkCreator:
 
         return get_radial_layout(node_id, selected_nodes, (0, 0), 250) + selected_edges
 
-
-
-
-
     def create_networkx_nodes_and_edges(self):
-        self.networkx_graph = nx.Graph()
-        nodes = []
-        edges = []
+        self.networkx_graph = nx.DiGraph()
+
+        # Add nodes and edges from cytoscape
+        for i in range(len(self.cytoscape_nodes)):
+            self.networkx_graph.add_node(self.cytoscape_nodes[i]['data']['id'])
+        for i in range(len(self.cytoscape_edges)):
+            self.networkx_graph.add_edge(self.cytoscape_edges[i]['data']['source'],
+                                         self.cytoscape_edges[i]['data']['target'],
+                                         weight=int(self.cytoscape_edges[i]['data']['weight'])
+                                         )
+
+
+##### GRAPH METRICS #####
+
+    def get_degree_centrality(self, node: str):
+        degree_centralities = nx.degree_centrality(self.networkx_graph)
+        return degree_centralities[node]
+
+    def get_eigenvector_centrality(self):
+        eigenvector_centrality = nx.eigenvector_centrality(self.networkx_graph)
+        return eigenvector_centrality
+
+    def get_betweenness_centrality(self, node: str):
+        betweenness_centralities = nx.betweenness_centrality(self.networkx_graph)
+        return betweenness_centralities[node]
+
+
+
 
     def get_graphs(self, start_date, end_date):
         pass
