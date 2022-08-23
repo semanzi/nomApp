@@ -166,6 +166,7 @@ class NetworkCreator:
         return self.cytoscape_edges
 
     def get_cytoscape_graph(self, graph_name: str):
+
         return cyto.Cytoscape(id=graph_name,
                               elements=self.cytoscape_nodes + self.cytoscape_edges,
                               layout={

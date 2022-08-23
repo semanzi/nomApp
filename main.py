@@ -217,7 +217,7 @@ def get_cleaning_page():
         ]
 
 elements = []
-slider = DateSlider(start_date=date(day=23, month=5, year=2009), end_date=date(day=2, month=8, year=2014), slice_size=1, slice_resolution='Month')
+slider = DateSlider(start_date=date(day=1, month=1, year=2000), end_date=date(day=1, month=1, year=2050), slice_size=1, slice_resolution='Month')
 
 # VISUALISATION
 def get_visualisation_page():
@@ -231,11 +231,16 @@ def get_visualisation_page():
         ]
     else:
         return [
-            dcc.DatePickerRange(id='date_picker', style={'width': '25vw'}, display_format='DD/MM/YYYY'),
-            slider.get_slider(),
+            dcc.DatePickerRange(id='date_picker', style={'width': '25vw'}, display_format='DD/MM/YYYY', start_date=date(day=1, month=1, year=2000), end_date=date(day=1, month=1, year=2050)),
+            dcc.Dropdown(id='dropdown', options=['Year', 'Month', 'Day'], style={'width': '200px', 'margin': '20px'}, value='Day', clearable=False),
+            html.Div(
+                children=slider.get_slider(),
+                style={'height': '150px', 'width': '80%'},
+                id='date_slider_container'
+            ),
             network1.get_cytoscape_graph('main_graph'),
             html.Button("Toggle in/out", id='toggle', style={'width': '15vw', 'height': '10vw'}),
-            html.H1(id='in/out_text', children=toggle_value),
+            html.H1(id='in/out_text', children=toggle_value, style={'margin': '10px'}),
             network1.get_specific_node_cytoscape_graph('sub_graph', 'out'),
 
 
@@ -326,31 +331,47 @@ def update_selected_node_graph(data, button):
 
 @app.callback(
     Output(component_id='main_graph', component_property='elements'),
-    Output(component_id='date_slice_picker', component_property='min'),
-    Output(component_id='date_slice_picker', component_property='max'),
+    Output(component_id='date_slider_container', component_property='children'),
     Input(component_id='date_picker', component_property='start_date'),
     Input(component_id='date_picker', component_property='end_date'),
+    Input(component_id='date_slider', component_property='value'),
+    Input(component_id='dropdown', component_property='value'),
+    State(component_id='date_slider_container', component_property='children')
 )
-def update_graphs(start_date_: str, end_date_: str):
-    if start_date_ is not None:
-        start_date = datetime.strptime(start_date_, "%Y-%m-%d").date()
-    else:
-        start_date = date(day=1, month=1, year=1000)
-
-    if end_date_ is not None:
-        end_date = datetime.strptime(end_date_, "%Y-%m-%d").date()
-    else:
-        end_date = date(day=1, month=1, year=9999)
-
-    days_between_dates = (end_date - start_date).days
-    if days_between_dates > 365:
-        days_between_dates = 365
+def date_input(start_date_: str, end_date_: str, date_slider_value, dropdown_value, current_slider):
+    triggered_id = dash.callback_context.triggered_id
 
     global network1
-    network1.create_cytoscape_nodes_and_edges(all_nodes_and_edges=False, start_date=start_date, end_date=end_date)
+    global slider
+
     update_selected_node_graph(None, 0)
 
-    return network1.get_cytoscape_nodes() + network1.get_cytoscape_edges(), 0, days_between_dates
+    if triggered_id == 'date_picker':
+        if start_date_ is not None:
+            start_date = datetime.strptime(start_date_, "%Y-%m-%d").date()
+        else:
+            start_date = date(day=1, month=1, year=1000)
+
+        if end_date_ is not None:
+            end_date = datetime.strptime(end_date_, "%Y-%m-%d").date()
+        else:
+            end_date = date(day=1, month=1, year=9999)
+
+        slider.update_slider(start_date, end_date, slider.slice_size, slider.slice_resolution)
+        network1.create_cytoscape_nodes_and_edges(all_nodes_and_edges=False, start_date=start_date, end_date=end_date)
+        return network1.get_cytoscape_nodes() + network1.get_cytoscape_edges(), slider.get_slider()
+
+    elif triggered_id == 'date_slider':
+        start_date = slider.get_date_at_pos(date_slider_value[0])
+        end_date = slider.get_date_at_pos(date_slider_value[1])
+        network1.create_cytoscape_nodes_and_edges(all_nodes_and_edges=False, start_date=start_date, end_date=end_date)
+        return network1.get_cytoscape_nodes() + network1.get_cytoscape_edges(), current_slider
+
+    elif triggered_id == 'dropdown':
+        slider.update_slider(slider.start_date, slider.end_date, 1, dropdown_value)
+        return network1.get_cytoscape_nodes() + network1.get_cytoscape_edges(), slider.get_slider()
+
+
 
 
 if __name__ == '__main__':
