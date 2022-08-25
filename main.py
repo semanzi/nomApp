@@ -5,6 +5,8 @@ import pandas as pd
 from NetworkCreation import NetworkCreator
 from DateSlider import DateSlider
 from datetime import datetime, date
+import plotly.express as px
+from AnalysisInstance import AnalysisInstance
 
 app = dash.Dash(__name__, suppress_callback_exceptions=True)
 server = app.server
@@ -46,12 +48,14 @@ app.layout = html.Div(
         html.Div(
             id='page-viewer',
             children=[],
-            style={'background-color': '#D6FDFF', 'width': '100vw', 'height': '100vh', 'position': 'relative', 'top': '12vw', 'left': '0px', 'margin': '0px', 'padding': '0px'}
+            style={'background-color': '#D6FDFF', 'width': '100vw', 'height': '100vh', 'position': 'relative',
+                   'top': '12vw', 'left': '0px', 'margin': '0px', 'padding': '0px'}
 
         ),
         dcc.Location(id='url', refresh=False)
     ],
-    style={'background-color': '#D6FDFF', 'height': 'auto', 'position': 'absolute', 'left': '0px', 'padding': '0px', 'margin': '0px', 'width': '100%'}
+    style={'background-color': '#D6FDFF', 'height': 'auto', 'position': 'absolute', 'left': '0px', 'padding': '0px',
+           'margin': '0px', 'width': '100%'}
 )
 
 
@@ -99,7 +103,8 @@ def columns_complete(dataset: pd.DataFrame):
 
 def headers_labelled_correctly(dataset: pd.DataFrame):
     headers = dataset.columns
-    if headers.__contains__('service') and headers.__contains__('id') and headers.__contains__('referraldate') and headers.__contains__('dischargedate'):
+    if headers.__contains__('service') and headers.__contains__('id') and headers.__contains__(
+            'referraldate') and headers.__contains__('dischargedate'):
         return True
     return False
 
@@ -125,8 +130,6 @@ def data_time_formatted(dataset: pd.DataFrame):
         # Check discharge date
         discharge_date = dataset.loc[i]['dischargedate']
 
-
-
     return True
 
 
@@ -134,6 +137,7 @@ def data_time_formatted(dataset: pd.DataFrame):
 
 uploader_component = du.Upload(id='dash-uploader', max_files=1, filetypes=['csv'],
                                text="Drag and Drop a dataset.csv file here")
+
 
 # HOME
 def get_home_page():
@@ -163,8 +167,8 @@ def get_home_page():
             "it yourself! This application is fully documented, with explanations of the algorithms used in creating "
             "the network graphs and calculating graph metrics", style={'font-size': '25px'}),
 
-
     ]
+
 
 # IMPORTING
 def get_import_page():
@@ -181,6 +185,7 @@ def get_import_page():
             html.H1(children='A file has already been uploaded, but you may upload a different one', id='upload-status')
 
         ]
+
 
 # CLEANING
 def get_cleaning_page():
@@ -202,25 +207,45 @@ def get_cleaning_page():
             html.H2("The checks that need to be done:"),
             html.Ul(
                 children=[
-                    html.Li(children="Check correct header names, should be: ID, Service, ReferralDate, DischargeDate", id='check_header_names'),
-                    html.Li(children="Check that ID, Service, ReferralDate are complete", id='check_column_completeness'),
+                    html.Li(children="Check correct header names, should be: ID, Service, ReferralDate, DischargeDate",
+                            id='check_header_names'),
+                    html.Li(children="Check that ID, Service, ReferralDate are complete",
+                            id='check_column_completeness'),
                     html.Li(children="Check ID is correct format (non-negative)", id='check_id'),
-                    html.Li(children="Check ReferralDate and DischargeDate are in correct format (non-negative, sensible values, dd/mm/yy)", id='check_datetime'),
+                    html.Li(
+                        children="Check ReferralDate and DischargeDate are in correct format (non-negative, sensible values, dd/mm/yy)",
+                        id='check_datetime'),
 
                 ],
                 style={'list-style-type': 'disc'}
-                    ),
+            ),
             html.H2("The number of rows in the dataset is " + str(len(file))),
             html.P(summary),
-            dash_table.DataTable(data=file.to_dict('records'), columns=[{"name": i, "id": i} for i in ['id', 'service', 'referraldate', 'dischargedate']], style_table={'width': '50vw', 'margin': '10px'})
+            dash_table.DataTable(data=file.to_dict('records'), columns=[{"name": i, "id": i} for i in
+                                                                        ['id', 'service', 'referraldate',
+                                                                         'dischargedate']],
+                                 style_table={'width': '50vw', 'margin': '10px'})
 
         ]
 
+
 elements = []
-slider = DateSlider(start_date=date(day=1, month=1, year=2000), end_date=date(day=1, month=1, year=2050), slice_size=1, slice_resolution='Month')
+slider = DateSlider(start_date=date(day=1, month=1, year=2000), end_date=date(day=1, month=1, year=2050), slice_size=1,
+                    slice_resolution='Year')
+fig = {}
+
+
+
+
+
+analysis_instances = [AnalysisInstance("2"), AnalysisInstance("3"), AnalysisInstance("4")]
+
+analysis_instance = AnalysisInstance(analysis_name="1")
+
 
 # VISUALISATION
 def get_visualisation_page():
+    global fig
     global file
     global network1
     global toggle_value
@@ -230,21 +255,32 @@ def get_visualisation_page():
                     style={'text-align': 'center', 'font-size': '40px', 'top': '50%', 'position': 'relative'}),
         ]
     else:
-        return [
-            dcc.DatePickerRange(id='date_picker', style={'width': '25vw'}, display_format='DD/MM/YYYY', start_date=date(day=1, month=1, year=2000), end_date=date(day=1, month=1, year=2050)),
-            dcc.Dropdown(id='dropdown', options=['Year', 'Month', 'Day'], style={'width': '200px', 'margin': '20px'}, value='Day', clearable=False),
-            html.Div(
-                children=slider.get_slider(),
-                style={'height': '150px', 'width': '80%'},
-                id='date_slider_container'
-            ),
-            network1.get_cytoscape_graph('main_graph'),
-            html.Button("Toggle in/out", id='toggle', style={'width': '15vw', 'height': '10vw'}),
-            html.H1(id='in/out_text', children=toggle_value, style={'margin': '10px'}),
-            network1.get_specific_node_cytoscape_graph('sub_graph', 'out'),
+        return [analysis_instance.get(),
+                """
+                html.Div(
+                children=[
+                    dcc.DatePickerRange(id='date_picker', style={'width': '25vw'}, display_format='DD/MM/YYYY',
+                                        start_date=date(day=1, month=1, year=2000), end_date=date(day=1, month=1, year=2050)),
+                ],
+                style={'margin': 'auto', 'width': '25vw'}
 
+                ),
 
-        ]
+                dcc.Dropdown(id='dropdown', options=['Year', 'Month', 'Day'], style={'width': '200px', 'margin': '20px'},
+                            value='Year', clearable=False),
+                dcc.Input(id='slice_size_input', value=1, style={'width': '200px', 'margin': '40px'}, required=True, min=1),
+                html.Div(
+                    children=slider.get_slider(),
+                    style={'height': '150px', 'width': '80%'},
+                    id='date_slider_container'
+                ),
+                network1.get_cytoscape_graph('main_graph'),
+                html.Button("Toggle in/out", id='toggle', style={'width': '15vw', 'height': '10vw'}),
+                html.H1(id='in/out_text', children=toggle_value, style={'margin': '10px'}),
+                network1.get_specific_node_cytoscape_graph('sub_graph', 'out'),
+                dcc.Graph(figure=fig, id='graph'),
+"""
+                ]
 
 
 # 404 PAGE NOT FOUND
@@ -252,9 +288,7 @@ def get_404_not_found_page():
     return [
         html.H1("ERROR 404: PAGE DOES NOT EXIST", style={'text-align': 'center', 'font-size': '100px'})
 
-
     ]
-
 
 
 ##### CALLBACKS #####
@@ -293,7 +327,18 @@ def uploaded(status: du.UploadStatus):
         file.columns = [x.lower() for x in file.columns]
         global network1
         network1.initialise(file)
-        print(network1.get_degree_centrality('CRHT'))
+
+
+
+        print("THIS IS THE INFO THAT YOU'RE LOOKING FOR")
+        data = network1.iterate(date(day=1, month=1, year=2008), date(day=1, month=1, year=2019), 1, "Day", "CMHT")
+        print(data)
+
+        d = {'col1': [i for i in range(len(data))], 'col2': data}
+        global fig
+        fig = px.bar(d, x="col1", y="col2", title="This is my graph")
+
+
         global elements
         elements = network1.get_cytoscape_nodes() + network1.get_cytoscape_edges()
 
@@ -328,7 +373,6 @@ def update_selected_node_graph(data, button):
     return network1.get_specific_node_elements(toggle_value), toggle_value
 
 
-
 @app.callback(
     Output(component_id='main_graph', component_property='elements'),
     Output(component_id='date_slider_container', component_property='children'),
@@ -336,9 +380,10 @@ def update_selected_node_graph(data, button):
     Input(component_id='date_picker', component_property='end_date'),
     Input(component_id='date_slider', component_property='value'),
     Input(component_id='dropdown', component_property='value'),
+    Input(component_id='slice_size_input', component_property='value'),
     State(component_id='date_slider_container', component_property='children')
 )
-def date_input(start_date_: str, end_date_: str, date_slider_value, dropdown_value, current_slider):
+def date_input(start_date_: str, end_date_: str, date_slider_value, dropdown_value, slice_size_value, current_slider):
     triggered_id = dash.callback_context.triggered_id
 
     global network1
@@ -357,21 +402,31 @@ def date_input(start_date_: str, end_date_: str, date_slider_value, dropdown_val
         else:
             end_date = date(day=1, month=1, year=9999)
 
-        slider.update_slider(start_date, end_date, slider.slice_size, slider.slice_resolution)
+        slider.update_slider(start_date, end_date, slider.slice_size, dropdown_value)
         network1.create_cytoscape_nodes_and_edges(all_nodes_and_edges=False, start_date=start_date, end_date=end_date)
         return network1.get_cytoscape_nodes() + network1.get_cytoscape_edges(), slider.get_slider()
 
-    elif triggered_id == 'date_slider':
+    if triggered_id == 'date_slider':
         start_date = slider.get_date_at_pos(date_slider_value[0])
         end_date = slider.get_date_at_pos(date_slider_value[1])
         network1.create_cytoscape_nodes_and_edges(all_nodes_and_edges=False, start_date=start_date, end_date=end_date)
         return network1.get_cytoscape_nodes() + network1.get_cytoscape_edges(), current_slider
 
-    elif triggered_id == 'dropdown':
+    if triggered_id == 'dropdown':
         slider.update_slider(slider.start_date, slider.end_date, 1, dropdown_value)
+        # start_date = slider.get_date_at_pos(date_slider_value[0])
+        # end_date = slider.get_date_at_pos(date_slider_value[1])
+        # network1.create_cytoscape_nodes_and_edges(all_nodes_and_edges=False, start_date=start_date, end_date=end_date)
         return network1.get_cytoscape_nodes() + network1.get_cytoscape_edges(), slider.get_slider()
 
+    if triggered_id == 'slice_size_input':
+        if slice_size_value == "":
+            return network1.get_cytoscape_nodes() + network1.get_cytoscape_edges(), current_slider
 
+        slider.update_slider(slider.start_date, slider.end_date, int(slice_size_value), slider.slice_resolution)
+        return network1.get_cytoscape_nodes() + network1.get_cytoscape_edges(), slider.get_slider()
+
+    return None
 
 
 if __name__ == '__main__':

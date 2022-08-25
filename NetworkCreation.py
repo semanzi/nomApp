@@ -1,7 +1,7 @@
 import pandas as pd
 import networkx as nx
 import dash_cytoscape as cyto
-import datetime
+from datetime import date, timedelta
 import math
 
 
@@ -46,8 +46,8 @@ class NetworkCreator:
         self.services = self.get_services()
         self.create_adjacency_matrix()
         self.create_cytoscape_nodes_and_edges(all_nodes_and_edges=True,
-                                              start_date=datetime.date(day=1, month=1, year=2000),
-                                              end_date=datetime.date(day=1, month=1, year=2000))
+                                              start_date=date(day=1, month=1, year=2000),
+                                              end_date=date(day=1, month=1, year=2000))
         self.full_cytoscape_nodes = self.cytoscape_nodes
         self.full_cytoscape_edges = self.cytoscape_edges
         self.create_networkx_nodes_and_edges()
@@ -98,10 +98,10 @@ class NetworkCreator:
                     month_end = 1
                     year_end = 9999
 
-                time_data = (datetime.date(day=day_start,
+                time_data = (date(day=day_start,
                                            month=month_start,
                                            year=year_start),
-                             datetime.date(day=day_end,
+                             date(day=day_end,
                                            month=month_end,
                                            year=year_end))
                 self.adjacency_matrix[index[0]][index[1]].append(time_data)
@@ -109,7 +109,7 @@ class NetworkCreator:
             prev_row += 1
             next_row += 1
 
-    def create_cytoscape_nodes_and_edges(self, all_nodes_and_edges: bool, start_date: datetime.date, end_date: datetime.date):
+    def create_cytoscape_nodes_and_edges(self, all_nodes_and_edges: bool, start_date: date, end_date: date):
         nodes = []
         edges = []
         active_services = [False for i in range(len(self.services))]
@@ -158,6 +158,7 @@ class NetworkCreator:
 
         self.cytoscape_nodes = nodes
         self.cytoscape_edges = edges
+        self.create_networkx_nodes_and_edges()
 
     def get_cytoscape_nodes(self):
         return self.cytoscape_nodes
@@ -272,6 +273,10 @@ class NetworkCreator:
 
         return get_radial_layout(node_id, selected_nodes, (0, 0), 250) + selected_edges
 
+
+##### NETWORK X #####
+
+
     def create_networkx_nodes_and_edges(self):
         self.networkx_graph = nx.DiGraph()
 
@@ -300,7 +305,127 @@ class NetworkCreator:
         return betweenness_centralities[node]
 
 
+##### GRAPH ITERATION #####
+
+    def iterate(self, start_date: date, end_date: date, slice_size: int, slice_resolution: str, node: str):
+        # Need to iterate through adjacency matrix
+        # Create networkX graph for each time slice
+        # Graph networkX stats
+
+        matrix = self.adjacency_matrix
+
+        for i in range(len(self.services)):
+            if self.services[i] == node:
+                node_number = i
+
+        data = []
+
+        if slice_resolution == "Year":
+            start_year = start_date.year
+            end_year = end_date.year
+            num_of_years = end_year - start_year + 1
+
+            # Iterate over years
+            for y in range(num_of_years):
+                current_year = start_year + y
+                temp_graph = nx.Graph()
+
+                # Iterate over adjacency matrix
+                for i in range(len(self.services)):
+                    for j in range(len(self.services)):
+                        instances_of_edge = matrix[i][j]
+                        # Iterate through instances of edges
+                        num_of_active_patients = 0
+                        for k in range(len(instances_of_edge)):
+                            # Is current year within two dates
+                            is_between = instances_of_edge[k][0].year <= current_year <= instances_of_edge[k][1].year
+                            if is_between:
+                                temp_graph.add_node(i)
+                                temp_graph.add_node(j)
+                                num_of_active_patients += 1
+                        if num_of_active_patients > 0:
+                            temp_graph.add_edge(i, j, weight=num_of_active_patients)
+
+                centrality = nx.betweenness_centrality(temp_graph)
+                if centrality.__contains__(node_number):
+                    data += [centrality[node_number]]
+                else:
+                    data += [0]
+
+            return data
+
+        if slice_resolution == "Month":
+            current_year = start_date.year
+            current_month = start_date.month
+
+            # Iterate over months
+            while not (current_year == end_date.year and current_month == end_date.month + 1):
+                temp_graph = nx.Graph()
+
+                # Iterate over adjacency matrix
+                for i in range(len(self.services)):
+                    for j in range(len(self.services)):
+                        instances_of_edge = matrix[i][j]
+                        # Iterate through instances of edges
+                        num_of_active_patients = 0
+                        for k in range(len(instances_of_edge)):
+                            # Is current month within two dates
+                            is_between1 = date(day=15, month=current_month, year=current_year) >= date(day=1, month=instances_of_edge[k][0].month, year=instances_of_edge[k][0].year)
+                            is_between2 = date(day=15, month=current_month, year=current_year) <= date(day=28, month=instances_of_edge[k][1].month, year=instances_of_edge[k][1].year)
+                            if is_between1 and is_between2:
+                                temp_graph.add_node(i)
+                                temp_graph.add_node(j)
+                                num_of_active_patients += 1
+                        if num_of_active_patients > 0:
+                            temp_graph.add_edge(i, j, weight=num_of_active_patients)
+
+                centrality = nx.betweenness_centrality(temp_graph)
+                if centrality.__contains__(node_number):
+                    data += [centrality[node_number]]
+                else:
+                    data += [0]
+
+                current_month += 1
+                if current_month > 12:
+                    current_month = 1
+                    current_year += 1
+
+            return data
+
+        if slice_resolution == "Day":
+            num_of_days = (end_date - start_date).days
+
+            # Iterate through days
+            for d in range(num_of_days):
+                current_day = start_date + timedelta(days=d)
+
+                temp_graph = nx.Graph()
+
+                # Iterate over adjacency matrix
+                for i in range(len(self.services)):
+                    for j in range(len(self.services)):
+                        instances_of_edge = matrix[i][j]
+                        num_of_active_patients = 0
+
+                        for k in range(len(instances_of_edge)):
+                            is_between = instances_of_edge[k][0] <= current_day <= instances_of_edge[k][1]
+                            if is_between:
+                                temp_graph.add_node(i)
+                                temp_graph.add_node(j)
+                                num_of_active_patients += 1
+                        if num_of_active_patients > 0:
+                            temp_graph.add_edge(i, j, weight=num_of_active_patients)
+
+                centrality = nx.betweenness_centrality(temp_graph)
+                if centrality.__contains__(node_number):
+                    data += [centrality[node_number]]
+                else:
+                    data += [0]
+
+            return data
 
 
-    def get_graphs(self, start_date, end_date):
-        pass
+
+
+
+

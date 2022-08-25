@@ -34,10 +34,12 @@ class DateSlider:
     def do_stuff(self):
         if self.slice_resolution == "Year":
             num_of_years = self.end_date.year - self.start_date.year
+            num_of_marks = math.floor(num_of_years / self.slice_size)
+            remainder = num_of_marks % self.slice_size
 
             self.marks = {}
-            for i in range(num_of_years + 1):
-                current_year = self.start_date.year + i
+            for i in range(num_of_marks + 1):
+                current_year = self.start_date.year + (i * self.slice_size)
                 date_mark = str(current_year)
                 self.marks.update({i: {'label': date_mark,
                                        'style': {'writing-mode': 'vertical-rl',
@@ -48,7 +50,6 @@ class DateSlider:
                                    }
                                   )
 
-            num_of_marks = num_of_years
             self.slider = dcc.RangeSlider(id='date_slider',
                                           min=0,
                                           max=num_of_marks,
