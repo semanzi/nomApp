@@ -1,0 +1,601 @@
+ID,ReferralDate,DischargeDate,Team,Service,GeneralSpeciality,GeneralSpecialtyAge,Setting,Locality
+14,25/02/2011,17/05/2016,Link Centre Area 1,Link Centre,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+14,22/07/2011,,Area 31 Adult Community Sector C,Adult Community,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+14,30/12/2014,08/12/2015,Area 23 PPT,PPT,PSYCHOTHERAPY,Adult,Community,Locality 1
+14,24/09/2016,,Link Centre Area 1,Link Centre,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+64,04/11/2014,22/03/2016,Area 23 PPT,PPT,PSYCHOTHERAPY,Adult,Community,Locality 1
+64,23/01/2015,09/08/2015,Area 23 MHAR,MHAR,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+64,01/05/2016,01/07/2017,Area 23 PPT,PPT,PSYCHOTHERAPY,Adult,Community,Locality 1
+64,20/04/2016,31/05/2016,Area 24 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+64,21/07/2016,,Crediton CMHT,CMHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+64,19/08/2017,,Link Centre Area 1,Link Centre,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+89,19/04/2008,,Area 26 CMHT,CMHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+89,09/03/2013,17/07/2015,Personality Disorders Service,Personality Disorders Service,PSYCHOTHERAPY,Adult,Community,Whole County
+89,26/02/2015,26/02/2015,Area 30 Liaison Service,Liaison Service,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+89,30/01/2015,30/01/2015,Area 30 Liaison Service,Liaison Service,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+89,13/04/2015,13/04/2015,Area 30 Liaison Service,Liaison Service,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+89,07/03/2015,15/03/2015,Area 30 Liaison Service,Liaison Service,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+89,27/04/2015,27/04/2015,Area 30 Liaison Service,Liaison Service,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+89,29/06/2015,30/06/2015,Area 30 AMHP,AMHP,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+89,12/09/2015,13/09/2015,Liaison Psychiatry Area 30,Liaison Psychiatry,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+89,24/08/2015,01/09/2015,Area 30 CRHT,CRHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+89,06/09/2015,07/09/2015,Liaison Psychiatry Area 30,Liaison Psychiatry,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+89,01/09/2015,04/09/2015,Area 30 CRHT,CRHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+89,26/07/2015,27/07/2015,Liaison Psychiatry Area 30,Liaison Psychiatry,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+89,13/10/2015,14/10/2015,Liaison Psychiatry Area 30,Liaison Psychiatry,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+89,24/10/2015,24/10/2015,Liaison Psychiatry Area 30,Liaison Psychiatry,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+89,09/11/2015,09/11/2015,Liaison Psychiatry Area 30,Liaison Psychiatry,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+89,12/10/2015,30/04/2016,Personality Disorders Service,Personality Disorders Service,PSYCHOTHERAPY,Adult,Community,Whole County
+89,13/11/2015,15/11/2015,Liaison Psychiatry Area 30,Liaison Psychiatry,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+89,17/12/2015,17/12/2015,Area 30 AMHP,AMHP,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+89,20/04/2016,,Gender Identity and Sexual Therapy,Gender Identity and Sexual Therapy,ADULT MENTAL ILLNESS,Adult,Community,Whole County
+89,09/08/2016,10/08/2016,Liaison Psychiatry Area 30,Liaison Psychiatry,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+89,27/06/2016,29/06/2016,Area 30 AMHP,AMHP,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+89,26/07/2016,27/07/2016,Liaison Psychiatry Area 30,Liaison Psychiatry,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+89,07/07/2016,07/07/2016,Liaison Psychiatry Area 30,Liaison Psychiatry,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+89,10/09/2016,11/09/2016,Liaison Psychiatry Area 30,Liaison Psychiatry,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+89,23/06/2016,23/06/2016,Liaison Psychiatry Area 30,Liaison Psychiatry,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+89,21/07/2016,21/07/2016,Liaison Psychiatry Area 30,Liaison Psychiatry,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+89,21/06/2016,21/06/2016,Area 35 Emergency Duty Team,Emergency Duty Team,ADULT MENTAL ILLNESS,Adult,Community,Whole County
+89,27/07/2016,27/07/2016,Liaison Psychiatry Area 30,Liaison Psychiatry,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+89,16/10/2016,22/10/2016,Liaison Psychiatry Area 30,Liaison Psychiatry,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+89,13/10/2016,18/10/2016,Area 30 AMHP,AMHP,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+89,15/02/2017,15/02/2017,Liaison Psychiatry Area 30,Liaison Psychiatry,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+89,19/03/2017,19/03/2017,Liaison Psychiatry Area 30,Liaison Psychiatry,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+89,22/02/2017,28/02/2017,Area 30 AMHP,AMHP,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+89,17/02/2017,19/02/2017,Area 30 CRHT,CRHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+89,16/04/2017,17/04/2017,Liaison Psychiatry Area 30,Liaison Psychiatry,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+89,07/03/2017,07/03/2017,Area 25 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+89,15/05/2017,15/05/2017,Area 30 AMHP,AMHP,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+89,20/09/2017,20/09/2017,Liaison Psychiatry Area 30,Liaison Psychiatry,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+89,30/08/2017,30/08/2017,Liaison Psychiatry Area 30,Liaison Psychiatry,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+89,22/09/2017,22/09/2017,Liaison Psychiatry Area 30,Liaison Psychiatry,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+89,22/10/2017,23/10/2017,Liaison Psychiatry Area 30,Liaison Psychiatry,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+89,11/12/2017,15/12/2017,Area 30 CRHT,CRHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+89,18/12/2017,18/12/2017,Liaison Psychiatry Area 30,Liaison Psychiatry,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+89,13/11/2017,13/11/2017,Liaison Psychiatry Area 30,Liaison Psychiatry,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+89,06/11/2017,06/11/2017,Liaison Psychiatry Area 30,Liaison Psychiatry,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+89,03/12/2017,05/12/2017,Area 35 Emergency Duty Team,Emergency Duty Team,ADULT MENTAL ILLNESS,Adult,Community,Whole County
+244,18/08/2017,01/09/2017,Area 24 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+244,02/10/2017,,Area 31 Adult Community Sector C,Adult Community,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+291,16/01/2009,20/02/2015,Area 23 MHAR,MHAR,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+291,20/10/2015,29/12/2015,Area 23 PAR,PAR,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+291,18/01/2016,21/03/2016,Area 23 PAR,PAR,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+356,22/11/2014,01/12/2014,Area 24 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+356,13/09/2015,15/09/2015,Area 23 CRHT,CRHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+356,06/10/2015,,Area 31 Adult Community Sector C,Adult Community,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+356,16/10/2015,,Link Centre Area 1,Link Centre,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+356,04/09/2015,10/09/2015,Area 23 CRHT,CRHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+356,10/10/2015,22/10/2015,Area 23 CRHT,CRHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+356,30/12/2015,09/01/2016,Area 23 CRHT,CRHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+356,04/08/2016,04/08/2016,Area 23 Liaison Service,Liaison Service,LIAISON PSYCHIATRY,Adult,Community,Locality 1
+361,28/01/2015,29/01/2015,Area 23 CRHT,CRHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+361,19/01/2015,31/01/2015,Area 23 CRHT,CRHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+361,16/03/2015,16/03/2015,Area 23 CRHT,CRHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+361,18/02/2015,03/03/2015,Area 23 CRHT,CRHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+361,27/02/2015,27/02/2015,Area 23 Liaison Service,Liaison Service,LIAISON PSYCHIATRY,Adult,Community,Locality 1
+361,06/03/2015,14/03/2015,Area 24 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+361,17/03/2015,22/03/2015,Area 23 Liaison Service,Liaison Service,LIAISON PSYCHIATRY,Adult,Community,Locality 1
+361,11/03/2015,07/06/2015,Oasis,Oasis,PSYCHOTHERAPY,Adult,Community,Whole County
+361,04/04/2015,01/05/2015,Link Centre Area 2,Link Centre,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+361,22/06/2015,18/10/2015,Area 23 Education Link,Education Link,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+361,21/06/2015,04/07/2015,Area 23 Liaison Service,Liaison Service,LIAISON PSYCHIATRY,Adult,Community,Locality 1
+361,28/07/2015,30/11/2015,Oasis,Oasis,PSYCHOTHERAPY,Adult,Community,Whole County
+361,10/08/2015,13/08/2015,Area 23 MHAR,MHAR,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+361,21/04/2016,19/06/2016,Area 24 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+361,10/08/2016,11/08/2016,Area 23 CRHT,CRHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+361,17/06/2016,30/06/2016,Area 23 Education Link,Education Link,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+361,22/06/2016,28/10/2016,Link Centre Area 2,Link Centre,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+361,18/08/2016,18/08/2016,Area 23 Liaison Service,Liaison Service,LIAISON PSYCHIATRY,Adult,Community,Locality 1
+361,24/09/2016,25/09/2016,Area 23 CRHT,CRHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+361,28/12/2016,30/12/2016,Area 35 Liaison and Diversion Team,Liaison and Diversion Team,ADULT MENTAL ILLNESS,Adult,Community,Whole County
+361,01/01/2017,01/01/2017,Area 23 CRHT,CRHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+364,12/07/2015,31/10/2015,Area 24 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+364,26/06/2015,,Area 31 Adult Community Sector A,Adult Community,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+364,03/07/2015,03/07/2015,Area 23 Liaison Service,Liaison Service,LIAISON PSYCHIATRY,Adult,Community,Locality 1
+364,21/09/2015,22/09/2015,Area 23 CRHT,CRHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+364,16/07/2015,17/07/2015,Area 23 Liaison Service,Liaison Service,LIAISON PSYCHIATRY,Adult,Community,Locality 1
+364,16/08/2015,17/08/2015,Liaison Psychiatry Area 30,Liaison Psychiatry,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+364,05/10/2015,06/10/2015,Area 23 CRHT,CRHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+364,04/03/2016,05/03/2016,Area 23 CRHT,CRHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+364,09/03/2016,09/03/2016,Area 32 PAMS,PAMS,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+364,30/04/2016,04/05/2016,Area 23 CRHT,CRHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+364,29/06/2016,05/07/2016,Area 32 AMHP,AMHP,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+364,13/08/2016,13/08/2016,Liaison Psychiatry Area 30,Liaison Psychiatry,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+364,05/07/2016,05/07/2016,Area 23 Liaison Service,Liaison Service,LIAISON PSYCHIATRY,Adult,Community,Locality 1
+364,14/08/2016,14/08/2016,Liaison Psychiatry Area 30,Liaison Psychiatry,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+364,02/07/2016,02/07/2016,Area 23 Liaison Service,Liaison Service,LIAISON PSYCHIATRY,Adult,Community,Locality 1
+364,22/07/2016,23/07/2016,Area 23 CRHT,CRHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+364,01/08/2016,01/08/2016,Liaison Psychiatry Area 30,Liaison Psychiatry,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+364,30/10/2016,04/01/2018,Link Centre Area 2,Link Centre,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+364,20/11/2016,20/11/2016,Area 23 Liaison Service,Liaison Service,LIAISON PSYCHIATRY,Adult,Community,Locality 1
+364,02/01/2017,03/01/2017,Area 23 CRHT,CRHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+364,31/01/2017,02/02/2017,Area 23 CRHT,CRHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+364,24/07/2017,24/07/2017,Liaison Psychiatry Area 30,Liaison Psychiatry,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+364,22/08/2017,22/08/2017,Liaison Psychiatry Area 30,Liaison Psychiatry,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+364,21/11/2017,,Link Centre Area 3,Link Centre,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+458,25/02/2017,10/06/2017,Area 24 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+471,13/06/2014,15/05/2017,Area 3a CMHT,CMHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+471,16/08/2016,17/08/2016,Area 27 AMHP,AMHP,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+471,25/10/2016,01/11/2016,Area 27 AMHP,AMHP,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+471,13/12/2016,15/12/2016,Area 30 CRHT,CRHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+471,18/01/2017,,Area 4 CMHT,CMHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+504,07/04/2014,14/05/2017,Crediton CMHT,CMHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+504,01/04/2015,02/04/2015,Area 29 CRHT,CRHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+504,13/10/2016,14/10/2016,Area 24 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+504,19/03/2017,,Area 31 Adult Community Sector C,Adult Community,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+504,18/06/2017,,Area 23 PPT,PPT,PSYCHOTHERAPY,Adult,Community,Locality 1
+506,27/08/2014,27/09/2015,Area 23 PPT,PPT,PSYCHOTHERAPY,Adult,Community,Locality 1
+506,24/08/2015,14/09/2015,Area 24 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+708,14/08/2010,30/12/2016,Area 4 CMHT,CMHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+708,26/01/2015,02/02/2015,Area 30 AMHP,AMHP,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+708,31/01/2015,30/03/2015,Area 30 AMHP,AMHP,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+708,09/04/2015,10/04/2015,Area 35 Liaison and Diversion Team,Liaison and Diversion Team,ADULT MENTAL ILLNESS,Adult,Community,Whole County
+708,14/03/2015,14/03/2015,Area 30 CRHT,CRHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+708,29/01/2015,29/01/2015,Area 30 AMHP,AMHP,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+708,05/02/2015,05/05/2015,Area 30 AMHP,AMHP,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+708,03/06/2015,12/06/2015,Area 30 AMHP,AMHP,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+708,15/07/2015,15/07/2015,Area 35 Liaison and Diversion Team,Liaison and Diversion Team,ADULT MENTAL ILLNESS,Adult,Community,Whole County
+708,18/05/2015,18/06/2015,Forensics,Forensics,FORENSIC PSYCHIATRY,Adult,Community,Whole County
+708,23/08/2015,15/09/2015,Forensics,Forensics,FORENSIC PSYCHIATRY,Adult,Community,Whole County
+708,29/11/2015,08/06/2016,Personality Disorders Service,Personality Disorders Service,PSYCHOTHERAPY,Adult,Community,Whole County
+708,07/09/2015,08/09/2015,Area 35 Emergency Duty Team,Emergency Duty Team,ADULT MENTAL ILLNESS,Adult,Community,Whole County
+708,23/11/2015,03/12/2015,Area 30 AMHP,AMHP,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+708,28/03/2016,29/03/2016,Area 35 Liaison and Diversion Team,Liaison and Diversion Team,ADULT MENTAL ILLNESS,Adult,Community,Whole County
+708,10/03/2016,14/03/2016,Area 30 CRHT,CRHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+708,16/05/2016,16/05/2016,Area 30 AMHP,AMHP,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+708,26/08/2016,15/01/2018,Forensics,Forensics,FORENSIC PSYCHIATRY,Adult,Community,Whole County
+708,04/12/2016,06/02/2018,IPP Management,IPP Management,FORENSIC PSYCHIATRY,Adult,Community,Whole County
+820,02/06/2015,31/07/2015,Area 24 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+820,14/06/2015,08/11/2015,Area 5 Older Peoples Psychology,Older Peoples Psychology,PSYCHOTHERAPY,Adult,Community,Locality 2
+820,11/06/2016,01/01/2017,Area 5 Older Peoples Psychology,Older Peoples Psychology,PSYCHOTHERAPY,Adult,Community,Locality 2
+901,14/05/2011,14/02/2015,Area 30 Area 29 PPT,PPT,PSYCHOTHERAPY,Adult,Community,Locality 2
+950,06/03/2014,,Area 30 Area 29 PPT,PPT,PSYCHOTHERAPY,Adult,Community,Locality 2
+950,01/07/2017,02/07/2017,Area 24 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+984,13/02/2017,14/02/2017,Liaison Psychiatry Area 30,Liaison Psychiatry,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+984,25/04/2017,11/07/2017,Area 25 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+984,13/05/2017,13/05/2017,Liaison Psychiatry Area 30,Liaison Psychiatry,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+984,19/06/2017,,Area 4 CMHT,CMHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+984,09/07/2017,28/07/2017,Area 30 CRHT,CRHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+984,20/08/2017,20/08/2017,Liaison Psychiatry Area 30,Liaison Psychiatry,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+984,17/08/2017,17/08/2017,Liaison Psychiatry Area 30,Liaison Psychiatry,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+984,11/08/2017,30/08/2017,Area 30 CRHT,CRHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+984,25/01/2018,27/01/2018,Area 30 CRHT,CRHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+1108,13/11/2012,18/04/2015,Area 6 MHAR,MHAR,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+1108,21/02/2016,01/01/2017,LD Primary Care Team,LD Primary Care Team,LEARNING DISABILITY,Adult,Community,Whole County
+1108,20/09/2016,24/07/2017,LD Intensive Assessment Area 25,LD Intensive Assessment,LEARNING DISABILITY,Adult,Community,Locality 2
+1108,17/08/2017,25/08/2017,LD District General Hospital,LD District General Hospital,LEARNING DISABILITY,Adult,Community,Whole County
+1168,30/12/2014,03/02/2015,Area 24 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+1168,11/03/2015,21/08/2015,WorkWays,WorkWays,ADULT MENTAL ILLNESS,Adult,Community,Whole County
+1168,15/01/2015,19/12/2016,Area 30 Area 29 PPT,PPT,PSYCHOTHERAPY,Adult,Community,Locality 2
+1168,20/05/2015,21/05/2015,Area 24 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+1168,16/02/2017,14/03/2017,Area 24 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+1168,12/05/2017,,Area 8 CMHT,CMHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+1168,17/08/2017,17/08/2017,Liaison Psychiatry Area 30,Liaison Psychiatry,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+1168,07/11/2017,,Area 24 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+1310,04/01/2015,04/01/2015,Area 30 Liaison Service,Liaison Service,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+1437,06/11/2013,24/10/2016,Area 23 MHAR,MHAR,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+1437,28/08/2015,04/09/2015,Area 24 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+1437,30/06/2016,14/08/2016,Link Centre Area 2,Link Centre,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+1490,22/09/2017,29/09/2017,Area 30 Perinatal Service,Perinatal Service,PERINATAL,Adult,Community,Locality 2
+1540,30/06/2015,11/07/2015,Area 29 CRHT,CRHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+1540,17/09/2015,17/09/2015,Liaison Psychiatry Area 30,Liaison Psychiatry,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+1540,30/01/2016,31/01/2016,Liaison Psychiatry Area 30,Liaison Psychiatry,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+1540,27/04/2016,17/06/2016,Area 25 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+1540,18/05/2016,18/05/2016,Liaison Psychiatry Area 30,Liaison Psychiatry,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+1540,28/03/2017,28/03/2017,Liaison Psychiatry Area 30,Liaison Psychiatry,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+1540,04/05/2017,04/05/2017,Area 30 AMHP,AMHP,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+1540,17/08/2017,12/10/2017,Area 25 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+1540,27/06/2017,01/07/2017,Area 26 CMHT,CMHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+1540,01/01/2018,,Liaison Psychiatry Area 30,Liaison Psychiatry,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+1542,03/11/2013,18/01/2015,Link Centre Area 1,Link Centre,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+1542,14/03/2014,06/05/2017,Area 31 Adult Community Sector C,Adult Community,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+1542,07/03/2015,14/03/2016,Clinic 1 (Team),Clinic (Team),ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+1542,26/05/2015,30/03/2016,Area 30 Area 29 PPT,PPT,PSYCHOTHERAPY,Adult,Community,Locality 2
+1542,10/06/2015,06/01/2016,New Leaf,New Leaf,ADULT MENTAL ILLNESS,Adult,Community,Whole County
+1542,08/12/2015,08/03/2016,WorkWays,WorkWays,ADULT MENTAL ILLNESS,Adult,Community,Whole County
+1542,28/02/2016,12/03/2016,Area 23 PPT,PPT,PSYCHOTHERAPY,Adult,Community,Locality 1
+1542,26/08/2016,14/09/2016,Area 23 CRHT,CRHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+1542,07/08/2016,07/08/2016,Area 23 Liaison Service,Liaison Service,LIAISON PSYCHIATRY,Adult,Community,Locality 1
+1542,06/01/2017,15/01/2017,Area 23 Liaison Service,Liaison Service,LIAISON PSYCHIATRY,Adult,Community,Locality 1
+1542,26/01/2017,05/02/2017,Area 23 CRHT,CRHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+1542,16/02/2017,03/08/2017,Link Centre Area 9,Link Centre,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+1542,06/02/2017,13/02/2017,Area 23 CRHT,CRHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+1549,06/12/2014,15/12/2014,Area 29 CRHT,CRHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+1549,29/11/2014,23/12/2014,Area 29 PAR,PAR,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+1549,12/03/2015,03/10/2016,Area 27 MHAR,MHAR,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+1549,06/03/2015,07/03/2015,Area 25 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+1609,30/07/2005,02/04/2017,Area 10 Community Mental Health,Community Mental Health,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+1609,23/03/2017,17/04/2017,Area 10 Community Mental Health,Community Mental Health,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+1630,30/01/2015,07/03/2015,Area 11 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+1653,29/07/2004,31/08/2017,Area 12 CMHT,CMHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+1653,19/11/2014,14/12/2014,Area 32 Liaison Service,Liaison Service,LIAISON PSYCHIATRY,Adult,Community,Locality 3
+1653,20/11/2014,22/08/2015,Area 18 PPT,PPT,PSYCHOTHERAPY,Adult,Community,Locality 3
+1653,05/01/2015,05/01/2015,Area 32 Liaison Service,Liaison Service,LIAISON PSYCHIATRY,Adult,Community,Locality 3
+1653,03/02/2015,04/02/2015,Area 32 PAMS,PAMS,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+1653,05/03/2015,08/03/2015,Area 32 AMHP,AMHP,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+1653,10/03/2015,10/03/2015,Area 32 PAMS,PAMS,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+1653,07/05/2015,08/05/2015,Area 32 Liaison Service,Liaison Service,LIAISON PSYCHIATRY,Adult,Community,Locality 3
+1653,08/07/2015,08/07/2015,Area 32 Liaison Service,Liaison Service,LIAISON PSYCHIATRY,Adult,Community,Locality 3
+1653,15/07/2015,15/07/2015,Area 32 CRHT,CRHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+1653,13/11/2015,14/11/2015,Area 32 Liaison Service,Liaison Service,LIAISON PSYCHIATRY,Adult,Community,Locality 3
+1653,15/09/2015,15/09/2015,Area 32 CRHT,CRHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+1653,13/01/2016,14/01/2016,Area 32 Liaison Service,Liaison Service,LIAISON PSYCHIATRY,Adult,Community,Locality 3
+1653,20/01/2016,22/01/2016,Area 32 Liaison Service,Liaison Service,LIAISON PSYCHIATRY,Adult,Community,Locality 3
+1653,11/02/2016,03/03/2016,Area 32 Liaison Service,Liaison Service,LIAISON PSYCHIATRY,Adult,Community,Locality 3
+1653,14/07/2016,14/07/2016,Area 32 Liaison Service,Liaison Service,LIAISON PSYCHIATRY,Adult,Community,Locality 3
+1653,03/08/2016,03/08/2016,Area 32 Liaison Service,Liaison Service,LIAISON PSYCHIATRY,Adult,Community,Locality 3
+1653,06/06/2016,06/06/2016,Area 32 Liaison Service,Liaison Service,LIAISON PSYCHIATRY,Adult,Community,Locality 3
+1653,16/06/2016,16/06/2016,Area 32 Liaison Service,Liaison Service,LIAISON PSYCHIATRY,Adult,Community,Locality 3
+1653,19/07/2016,19/07/2016,Area 32 Liaison Service,Liaison Service,LIAISON PSYCHIATRY,Adult,Community,Locality 3
+1653,24/09/2016,27/09/2016,Area 35 Liaison and Diversion Team,Liaison and Diversion Team,ADULT MENTAL ILLNESS,Adult,Community,Whole County
+1653,26/10/2016,11/07/2017,Personality Disorders Service,Personality Disorders Service,PSYCHOTHERAPY,Adult,Community,Whole County
+1653,16/02/2017,,IPP Management,IPP Management,FORENSIC PSYCHIATRY,Adult,Community,Whole County
+1704,30/10/2004,28/07/2016,Area 13 MHAR,MHAR,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+1704,05/10/2012,16/09/2016,Area 18 PPT,PPT,PSYCHOTHERAPY,Adult,Community,Locality 3
+1745,30/10/2012,16/05/2015,Area 13 MHAR,MHAR,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+1745,03/03/2015,03/03/2015,Area 18 PPT,PPT,PSYCHOTHERAPY,Adult,Community,Locality 3
+1745,28/03/2016,23/10/2016,Area 11 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+1745,15/05/2016,16/05/2016,Area 32 CRHT,CRHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+1745,07/07/2016,,Area 14 CMHT,CMHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+1745,26/01/2017,25/10/2017,Area 32 Perinatal Service,Perinatal Service,PERINATAL,Adult,Community,Locality 3
+1799,27/09/2015,23/11/2015,Area 11 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+1799,02/01/2016,09/01/2016,Area 11 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+1799,24/01/2016,01/04/2016,Area 15 CMHT,CMHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+1799,03/03/2016,25/03/2017,Area 15 CMHT,CMHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+1799,17/06/2016,17/06/2016,Area 11 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+1880,13/01/2015,11/10/2016,Autistic Spectrum Condition Service,Autistic Spectrum Condition Service,ADULT MENTAL ILLNESS,Adult,Community,Whole County
+1880,11/03/2015,11/06/2015,Area 11 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+1880,05/01/2016,30/01/2016,Area 11 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+1880,01/01/2016,30/12/2016,Area 18 PPT,PPT,PSYCHOTHERAPY,Adult,Community,Locality 3
+1880,17/10/2016,28/06/2017,Area 12 CMHT,CMHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+1880,24/03/2017,,Autistic Spectrum Condition Service,Autistic Spectrum Condition Service,ADULT MENTAL ILLNESS,Adult,Community,Whole County
+1929,14/12/2009,,Area 10 Community Mental Health,Community Mental Health,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+1938,23/06/2015,11/07/2015,Area 32 OPMH Community,OPMH Community,OLD AGE PSYCHIATRY,Old Age,Community,Locality 3
+1968,29/11/2013,03/04/2016,Area 18 PPT,PPT,PSYCHOTHERAPY,Adult,Community,Locality 3
+1968,27/07/2014,19/10/2015,Area 33 MHAR,MHAR,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+2000,11/04/2016,11/04/2016,Area 32 Liaison Service,Liaison Service,LIAISON PSYCHIATRY,Adult,Community,Locality 3
+2000,02/02/2016,21/03/2016,Area 11 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+2000,08/03/2016,08/03/2016,Area 32 Liaison Service,Liaison Service,LIAISON PSYCHIATRY,Adult,Community,Locality 3
+2038,14/08/2013,20/09/2015,Area 15 OPMH Community,OPMH Community,OLD AGE PSYCHIATRY,Old Age,Community,Locality 3
+2038,03/01/2017,12/05/2017,Area 15 OPMH Community,OPMH Community,OLD AGE PSYCHIATRY,Old Age,Community,Locality 3
+2045,12/06/2013,12/11/2014,Area 18 PPT,PPT,PSYCHOTHERAPY,Adult,Community,Locality 3
+2045,21/07/2014,06/11/2014,Area 11 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+2247,25/01/2015,20/03/2015,Area 11 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+2247,23/12/2015,21/01/2016,Area 11 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+2247,07/01/2016,21/09/2016,Area 18 PPT,PPT,PSYCHOTHERAPY,Adult,Community,Locality 3
+2247,17/05/2016,28/06/2016,Area 11 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+2247,11/12/2016,15/12/2016,Area 11 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+2247,21/12/2016,22/12/2016,Area 12 CMHT,CMHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+2247,07/03/2017,01/01/2018,Area 12 CMHT,CMHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+2271,13/02/2014,04/11/2015,Area 33 MHAR,MHAR,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+2271,04/04/2015,10/04/2015,Area 11 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+2338,28/08/2014,29/10/2014,Area 11 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+2338,17/12/2014,13/02/2015,Area 11 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+2344,15/08/2012,04/02/2016,Area 10 OPMH Community,OPMH Community,OLD AGE PSYCHIATRY,Old Age,Community,Locality 3
+2344,14/12/2015,15/12/2015,Area 32 Liaison Service,Liaison Service,LIAISON PSYCHIATRY,Adult,Community,Locality 3
+2491,30/01/2014,13/12/2015,Area 33 MHAR,MHAR,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+2491,12/10/2015,13/10/2015,Area 32 CRHT,CRHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+2491,05/01/2016,09/08/2016,Area 33 MHAR,MHAR,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+2491,12/01/2016,05/02/2016,Area 32 AMHP,AMHP,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+2544,04/02/2015,22/06/2015,Area 11 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+2544,28/01/2016,15/07/2016,Area 11 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+2700,14/08/2014,04/04/2016,Area 33 MHAR,MHAR,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+2700,06/05/2015,06/05/2015,Area 32 Liaison Service,Liaison Service,LIAISON PSYCHIATRY,Adult,Community,Locality 3
+2700,01/10/2015,02/10/2015,Area 11 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+2700,31/10/2015,03/11/2015,Area 32 CRHT,CRHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+2700,16/12/2015,16/12/2015,Area 32 CRHT,CRHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+2859,22/09/2011,22/10/2014,Area 30 PAR STEP,PAR STEP,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+2859,21/03/2015,23/03/2015,Area 30 AMHP,AMHP,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+2859,20/04/2015,22/04/2015,Area 30 AMHP,AMHP,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+2859,02/04/2015,25/06/2015,Area 30 PAR,PAR,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+2859,28/12/2015,06/11/2016,Area 30 PAR,PAR,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+2970,03/06/2016,02/09/2016,Area 11 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+2970,21/06/2016,,Area 18 PPT,PPT,PSYCHOTHERAPY,Adult,Community,Locality 3
+3061,04/04/2014,,Area 26 CMHT,CMHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+3061,03/06/2015,03/06/2015,Liaison Psychiatry Area 30,Liaison Psychiatry,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+3061,12/07/2015,26/09/2015,Area 30 Area 29 PPT,PPT,PSYCHOTHERAPY,Adult,Community,Locality 2
+3061,26/10/2015,,Area 30 Area 29 PPT,PPT,PSYCHOTHERAPY,Adult,Community,Locality 2
+3061,17/12/2015,17/12/2015,Liaison Psychiatry Area 30,Liaison Psychiatry,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+3061,15/12/2015,16/12/2015,Liaison Psychiatry Area 30,Liaison Psychiatry,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+3061,20/05/2017,20/05/2017,Liaison Psychiatry Area 30,Liaison Psychiatry,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+3136,03/01/2014,24/10/2014,Area 18 PPT,PPT,PSYCHOTHERAPY,Adult,Community,Locality 3
+3136,03/04/2016,08/08/2016,Area 11 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+3136,07/07/2016,18/08/2016,Area 16 Community Mental Health,Community Mental Health,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+3136,05/02/2017,30/09/2017,Area 11 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+3136,07/12/2017,,Area 16 Community Mental Health,Community Mental Health,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+3300,26/03/2012,,Area 4 CMHT,CMHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+3370,16/12/2013,19/05/2015,Personality Disorders Service,Personality Disorders Service,PSYCHOTHERAPY,Adult,Community,Whole County
+3370,23/11/2013,10/06/2016,Area 30 PAR,PAR,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+3370,20/04/2016,,Area 26 CMHT,CMHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+3370,12/09/2016,14/09/2016,Area 30 CRHT,CRHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+3370,10/12/2016,10/12/2016,Liaison Psychiatry Area 30,Liaison Psychiatry,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+3370,30/12/2016,,Area 30 Area 29 PPT,PPT,PSYCHOTHERAPY,Adult,Community,Locality 2
+3370,23/06/2017,23/06/2017,Liaison Psychiatry Area 30,Liaison Psychiatry,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+3370,11/08/2017,16/08/2017,Liaison Psychiatry Area 30,Liaison Psychiatry,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+3471,10/11/2014,25/11/2014,Area 11 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+3471,22/11/2014,02/09/2016,Area 18 PPT,PPT,PSYCHOTHERAPY,Adult,Community,Locality 3
+3471,26/02/2015,06/03/2015,Area 11 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+3471,26/11/2015,27/11/2015,Area 32 PAMS,PAMS,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+3471,22/02/2016,,Area 17 CMHT,CMHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+3514,01/03/2014,12/10/2015,Autistic Spectrum Condition Service,Autistic Spectrum Condition Service,ADULT MENTAL ILLNESS,Adult,Community,Whole County
+3545,11/12/2014,01/02/2015,Area 24 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+3582,17/03/2015,07/05/2015,Area 15 OPMH Community,OPMH Community,OLD AGE PSYCHIATRY,Old Age,Community,Locality 3
+3582,17/07/2015,07/09/2015,Area 15 OPMH Community,OPMH Community,OLD AGE PSYCHIATRY,Old Age,Community,Locality 3
+3582,13/02/2017,03/06/2017,Area 15 OPMH Community,OPMH Community,OLD AGE PSYCHIATRY,Old Age,Community,Locality 3
+3654,13/02/2013,23/08/2016,Area 16 Community Mental Health,Community Mental Health,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+3654,12/12/2013,06/08/2016,Area 18 PPT,PPT,PSYCHOTHERAPY,Adult,Community,Locality 3
+3654,24/01/2017,14/03/2017,Area 11 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+3654,14/04/2017,,Area 12 CMHT,CMHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+3688,22/07/2015,22/07/2015,Area 32 PAMS,PAMS,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+3688,15/08/2015,15/08/2015,Area 32 AMHP,AMHP,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+3688,04/11/2015,04/11/2015,Area 32 PAMS,PAMS,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+3688,04/11/2015,09/11/2015,Area 10 CRHT,CRHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+3688,28/12/2015,02/01/2016,Area 32 Liaison Service,Liaison Service,LIAISON PSYCHIATRY,Adult,Community,Locality 3
+3688,06/10/2015,08/10/2015,Area 10 CRHT,CRHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+3688,02/11/2015,06/11/2015,Area 10 CRHT,CRHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+3688,13/01/2016,15/01/2016,Area 32 Liaison Service,Liaison Service,LIAISON PSYCHIATRY,Adult,Community,Locality 3
+3688,20/01/2016,27/01/2016,Area 10 CRHT,CRHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+3688,19/10/2016,21/10/2016,Area 10 CRHT,CRHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+3688,17/10/2016,01/03/2017,Area 10 Community Mental Health,Community Mental Health,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+3688,25/12/2016,17/01/2017,Area 10 AMHP,AMHP,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+3688,20/01/2017,24/02/2017,Area 35 Liaison and Diversion Team,Liaison and Diversion Team,ADULT MENTAL ILLNESS,Adult,Community,Whole County
+3688,12/06/2017,12/06/2017,Area 35 Emergency Duty Team,Emergency Duty Team,ADULT MENTAL ILLNESS,Adult,Community,Whole County
+3688,04/05/2017,,Area 10 Community Mental Health,Community Mental Health,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+3688,27/06/2017,29/06/2017,Area 10 CRHT,CRHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+3688,09/11/2017,,Area 18 PPT,PPT,PSYCHOTHERAPY,Adult,Community,Locality 3
+3688,20/12/2017,01/01/2018,Area 32 AMHP,AMHP,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+3799,28/02/2013,,Gender Identity and Sexual Therapy,Gender Identity and Sexual Therapy,ADULT MENTAL ILLNESS,Adult,Community,Whole County
+3799,31/08/2016,16/09/2016,Area 24 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+3799,13/08/2017,,Area 24 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+3799,20/08/2017,03/11/2017,Crediton CMHT,CMHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+3851,06/09/2013,08/02/2015,Area 33 MHAR,MHAR,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+3958,01/01/2016,15/01/2016,Area 10 CRHT,CRHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+3980,11/04/2015,09/05/2015,Area 25 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+3980,07/09/2016,07/09/2016,Liaison Psychiatry Area 30,Liaison Psychiatry,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+4004,13/12/2016,14/02/2017,Area 24 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+4065,02/06/2013,,Area 19 CMHT,CMHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+4065,09/11/2014,22/12/2014,Area 30 Area 29 PPT,PPT,PSYCHOTHERAPY,Adult,Community,Locality 2
+4065,27/01/2015,03/03/2015,Area 30 Area 29 PPT,PPT,PSYCHOTHERAPY,Adult,Community,Locality 2
+4065,04/12/2014,05/12/2014,Area 29 CRHT,CRHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+4065,31/07/2017,,Area 30 Area 29 PPT,PPT,PSYCHOTHERAPY,Adult,Community,Locality 2
+4119,28/06/2013,21/11/2014,Area 13 MHAR,MHAR,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+4119,26/11/2016,24/02/2017,Area 11 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+4119,23/10/2016,07/12/2016,Area 18 PPT,PPT,PSYCHOTHERAPY,Adult,Community,Locality 3
+4119,18/12/2016,,Area 18 PPT,PPT,PSYCHOTHERAPY,Adult,Community,Locality 3
+4201,13/05/2017,14/07/2017,Area 11 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+4201,25/07/2017,,Area 12 CMHT,CMHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+4306,28/08/2014,09/01/2015,Area 7 MHAR,MHAR,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+4389,11/12/2013,05/12/2014,Area 23 Perinatal Service,Perinatal Service,PERINATAL,Adult,Community,Locality 1
+4389,05/10/2016,05/10/2016,Area 23 Liaison Service,Liaison Service,LIAISON PSYCHIATRY,Adult,Community,Locality 1
+4456,07/06/2014,08/10/2016,Area 31 Adult Community Sector B,Adult Community,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+4456,07/03/2015,04/10/2015,Area 23 PPT,PPT,PSYCHOTHERAPY,Adult,Community,Locality 1
+4474,27/03/2015,28/03/2015,Area 30 Liaison Service,Liaison Service,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+4474,09/05/2015,26/06/2015,Area 27 MHAR,MHAR,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+4474,30/05/2015,30/05/2015,Area 29 CRHT,CRHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+4474,20/06/2015,22/07/2015,Area 29 CRHT,CRHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+4474,29/05/2015,31/05/2015,Liaison Psychiatry Area 30,Liaison Psychiatry,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+4474,04/06/2015,09/06/2015,Area 30 CRHT,CRHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+4474,14/12/2015,26/04/2017,Area 26 CMHT,CMHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+4474,18/06/2016,06/06/2017,Area 30 Area 29 PPT,PPT,PSYCHOTHERAPY,Adult,Community,Locality 2
+4523,24/05/2014,04/01/2015,Area 18 PPT,PPT,PSYCHOTHERAPY,Adult,Community,Locality 3
+4523,16/04/2015,,Area 12 CMHT,CMHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+4523,18/02/2016,22/02/2016,Area 32 Liaison Service,Liaison Service,LIAISON PSYCHIATRY,Adult,Community,Locality 3
+4523,28/04/2016,,Area 18 PPT,PPT,PSYCHOTHERAPY,Adult,Community,Locality 3
+4523,30/08/2017,,Autistic Spectrum Condition Service,Autistic Spectrum Condition Service,ADULT MENTAL ILLNESS,Adult,Community,Whole County
+4663,05/07/2014,03/03/2015,Area 20 OPMH Community,OPMH Community,OLD AGE PSYCHIATRY,Old Age,Community,Locality 1
+4663,15/02/2016,29/02/2016,Area 23 OPMH Community,OPMH Community,OLD AGE PSYCHIATRY,Old Age,Community,Locality 1
+4812,24/10/2014,29/09/2015,Area 34 MHAR,MHAR,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+4812,20/12/2014,21/12/2014,Area 29 CRHT,CRHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+4812,14/12/2014,17/12/2014,Area 29 CRHT,CRHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+4812,13/09/2015,15/09/2015,Liaison Psychiatry Area 30,Liaison Psychiatry,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+4812,27/06/2016,23/10/2016,Area 8 CMHT,CMHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+4812,07/03/2017,17/03/2017,Area 29 CRHT,CRHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+4812,24/11/2017,,Area 24 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+4873,20/10/2014,12/12/2014,Area 25 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+4891,05/01/2015,13/02/2015,Area 11 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+4891,09/03/2015,04/05/2015,Area 11 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+4891,16/10/2016,17/10/2016,Area 10 CRHT,CRHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+4891,04/11/2016,21/11/2017,Area 11 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+4891,22/02/2017,,Area 16 Community Mental Health,Community Mental Health,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+4937,20/11/2014,29/06/2015,Area 11 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+4937,27/10/2015,07/02/2016,Area 11 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+4937,08/07/2016,18/09/2016,Area 11 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+4937,25/09/2016,,Area 21 STEP,STEP,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+4937,11/10/2016,12/10/2016,Area 32 CRHT,CRHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+4937,06/09/2016,19/10/2016,Area 18 PPT,PPT,PSYCHOTHERAPY,Adult,Community,Locality 3
+4937,04/04/2017,,Area 18 PPT,PPT,PSYCHOTHERAPY,Adult,Community,Locality 3
+4987,09/12/2014,29/12/2014,Area 30 CRHT,CRHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+4987,23/10/2014,12/11/2016,WorkWays,WorkWays,ADULT MENTAL ILLNESS,Adult,Community,Whole County
+4987,11/03/2015,27/08/2016,Area 6 MHAR,MHAR,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+4987,12/07/2016,12/07/2016,Liaison Psychiatry Area 30,Liaison Psychiatry,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+4987,12/09/2016,13/09/2016,Liaison Psychiatry Area 30,Liaison Psychiatry,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+4987,30/10/2016,02/07/2017,Area 4 CMHT,CMHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+4987,01/02/2017,01/02/2017,Liaison Psychiatry Area 30,Liaison Psychiatry,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+4987,05/11/2017,02/12/2017,Area 25 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+5006,15/01/2015,04/02/2015,Area 15 OPMH Community,OPMH Community,OLD AGE PSYCHIATRY,Old Age,Community,Locality 3
+5006,10/10/2015,13/10/2015,Area 22 CRHT,CRHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+5006,18/09/2015,12/12/2015,Area 15 OPMH Community,OPMH Community,OLD AGE PSYCHIATRY,Old Age,Community,Locality 3
+5006,07/09/2015,15/09/2015,Area 22 CRHT,CRHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+5035,18/01/2015,31/01/2015,Area 25 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+5035,01/06/2015,15/02/2016,Area 25 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+5035,04/03/2016,31/03/2016,Area 30 CRHT,CRHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+5035,16/12/2015,27/01/2016,Area 6 MHAR,MHAR,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+5035,13/12/2015,16/12/2015,Liaison Psychiatry Area 30,Liaison Psychiatry,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+5035,18/03/2016,26/03/2016,Area 30 AMHP,AMHP,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+5035,10/02/2016,10/02/2016,Area 35 Liaison and Diversion Team,Liaison and Diversion Team,ADULT MENTAL ILLNESS,Adult,Community,Whole County
+5035,13/04/2016,22/04/2016,Area 25 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+5035,01/04/2016,30/06/2016,Area 6 MHAR,MHAR,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+5224,22/04/2015,13/10/2016,Area 6 MHAR,MHAR,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+5224,07/06/2015,23/07/2017,Area 30 Area 29 PPT,PPT,PSYCHOTHERAPY,Adult,Community,Locality 2
+5224,05/04/2015,17/05/2015,Area 30 Perinatal Service,Perinatal Service,PERINATAL,Adult,Community,Locality 2
+5224,29/03/2015,25/04/2015,Area 30 CRHT,CRHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+5224,09/05/2015,05/11/2016,WorkWays,WorkWays,ADULT MENTAL ILLNESS,Adult,Community,Whole County
+5224,20/08/2016,21/08/2016,Area 25 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+5227,21/03/2015,18/05/2015,Area 11 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+5227,06/08/2015,06/08/2015,Area 32 Liaison Service,Liaison Service,LIAISON PSYCHIATRY,Adult,Community,Locality 3
+5227,07/06/2015,14/03/2016,Area 33 MHAR,MHAR,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+5227,01/07/2015,,Area 32 OPMH Community,OPMH Community,OLD AGE PSYCHIATRY,Old Age,Community,Locality 3
+5227,09/02/2016,14/02/2016,Area 35 Liaison and Diversion Team,Liaison and Diversion Team,ADULT MENTAL ILLNESS,Adult,Community,Whole County
+5227,20/12/2015,02/01/2016,Area 32 AMHP,AMHP,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+5227,23/03/2016,13/04/2016,Area 32 AMHP,AMHP,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+5227,16/04/2016,21/05/2016,Area 18 PPT,PPT,PSYCHOTHERAPY,Adult,Community,Locality 3
+5227,16/06/2016,28/03/2017,Personality Disorders Service,Personality Disorders Service,PSYCHOTHERAPY,Adult,Community,Whole County
+5281,06/05/2015,07/05/2015,Area 29 CRHT,CRHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+5281,19/05/2015,25/06/2015,Area 25 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+5281,18/05/2015,18/05/2015,Liaison Psychiatry Area 30,Liaison Psychiatry,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+5281,10/11/2015,10/11/2015,Liaison Psychiatry Area 30,Liaison Psychiatry,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+5281,25/11/2015,11/04/2017,Area 19 CMHT,CMHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+5345,22/06/2015,05/01/2017,Gender Identity and Sexual Therapy,Gender Identity and Sexual Therapy,ADULT MENTAL ILLNESS,Adult,Community,Whole County
+5345,28/08/2016,29/08/2016,Liaison Psychiatry Area 30,Liaison Psychiatry,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+5345,16/10/2016,17/10/2016,Liaison Psychiatry Area 30,Liaison Psychiatry,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+5345,01/12/2016,01/12/2016,Liaison Psychiatry Area 30,Liaison Psychiatry,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+5345,04/10/2016,05/10/2016,Liaison Psychiatry Area 30,Liaison Psychiatry,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+5437,05/10/2015,02/12/2015,Area 24 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+5437,07/11/2015,24/08/2016,Area 30 Area 29 PPT,PPT,PSYCHOTHERAPY,Adult,Community,Locality 2
+5437,14/09/2015,07/11/2015,Area 35 Liaison and Diversion Team,Liaison and Diversion Team,ADULT MENTAL ILLNESS,Adult,Community,Whole County
+5437,04/01/2016,15/03/2016,Area 25 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+5437,15/03/2017,16/04/2017,Area 25 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+5437,23/01/2018,,Area 25 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+5481,24/08/2015,17/10/2015,Area 25 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+5481,11/10/2015,04/06/2016,Area 30 PAR STEP,PAR STEP,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+5481,06/12/2015,03/01/2016,Area 30 Area 29 PPT,PPT,PSYCHOTHERAPY,Adult,Community,Locality 2
+5482,02/07/2015,02/07/2015,Area 32 Liaison Service,Liaison Service,LIAISON PSYCHIATRY,Adult,Community,Locality 3
+5482,13/10/2015,,Forensics,Forensics,FORENSIC PSYCHIATRY,Adult,Community,Whole County
+5482,02/11/2015,03/11/2015,Liaison Psychiatry Area 30,Liaison Psychiatry,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+5482,06/08/2016,,IPP Management,IPP Management,FORENSIC PSYCHIATRY,Adult,Community,Whole County
+5507,16/09/2015,16/03/2017,Area 3a CMHT,CMHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+5507,29/11/2016,29/11/2016,Liaison Psychiatry Area 30,Liaison Psychiatry,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+5519,02/09/2015,07/09/2015,Area 23 Liaison Service,Liaison Service,LIAISON PSYCHIATRY,Adult,Community,Locality 1
+5519,19/08/2015,25/08/2016,Area 23 MHAR,MHAR,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+5519,04/09/2015,05/01/2016,Link Centre Area 2,Link Centre,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+5519,17/10/2015,26/10/2015,Area 23 CRHT,CRHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+5519,07/03/2016,18/01/2017,Area 23 Education Link,Education Link,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+5519,08/10/2017,23/11/2017,Area 24 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+5602,21/10/2015,21/10/2015,Liaison Psychiatry Area 30,Liaison Psychiatry,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+5602,05/01/2017,13/01/2017,Area 27 OPMH Community,OPMH Community,OLD AGE PSYCHIATRY,Old Age,Community,Locality 2
+5602,02/04/2017,,Area 27 OPMH Community,OPMH Community,OLD AGE PSYCHIATRY,Old Age,Community,Locality 2
+5602,30/01/2017,07/02/2017,Area 27 AMHP,AMHP,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+5602,12/01/2017,13/01/2017,Area 35 Emergency Duty Team,Emergency Duty Team,ADULT MENTAL ILLNESS,Adult,Community,Whole County
+5602,29/03/2017,01/04/2017,Area 27 AMHP,AMHP,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+5602,15/06/2017,09/09/2017,Area 5 Older Peoples Psychology,Older Peoples Psychology,PSYCHOTHERAPY,Adult,Community,Locality 2
+5602,25/10/2017,,Area 27 AMHP,AMHP,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+5695,23/12/2015,,Area 23 OPMH Community,OPMH Community,OLD AGE PSYCHIATRY,Old Age,Community,Locality 1
+5695,03/10/2016,07/10/2016,Area 23 Liaison Service,Liaison Service,LIAISON PSYCHIATRY,Adult,Community,Locality 1
+5695,21/11/2016,21/11/2016,Area 23 Liaison Service,Liaison Service,LIAISON PSYCHIATRY,Adult,Community,Locality 1
+5695,14/10/2016,14/10/2016,Area 23 Liaison Service,Liaison Service,LIAISON PSYCHIATRY,Adult,Community,Locality 1
+5695,01/08/2017,02/08/2017,Area 23 CRHT,CRHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+5695,10/08/2017,12/08/2017,Area 23 CRHT,CRHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+5695,02/07/2017,05/07/2017,Area 23 AMHP,AMHP,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+5695,15/09/2017,15/09/2017,Area 22 AMHP,AMHP,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+5695,21/09/2017,22/09/2017,Area 23 CRHT,CRHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+5719,21/01/2016,11/09/2016,Area 10 OPMH Community,OPMH Community,OLD AGE PSYCHIATRY,Old Age,Community,Locality 3
+5719,27/05/2017,09/06/2017,Area 10 OPMH Community,OPMH Community,OLD AGE PSYCHIATRY,Old Age,Community,Locality 3
+5793,05/02/2016,11/09/2017,Autistic Spectrum Condition Service,Autistic Spectrum Condition Service,ADULT MENTAL ILLNESS,Adult,Community,Whole County
+5793,16/04/2016,02/07/2016,Area 32 PAR STEP,PAR STEP,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+5793,07/09/2017,22/09/2017,Area 32 Perinatal Service,Perinatal Service,PERINATAL,Adult,Community,Locality 3
+5793,16/01/2018,,Area 32 Perinatal Service,Perinatal Service,PERINATAL,Adult,Community,Locality 3
+5842,17/04/2016,21/04/2016,Area 27 AMHP,AMHP,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+5842,28/04/2016,28/04/2016,Area 27 AMHP,AMHP,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+5842,02/06/2016,03/06/2016,Area 35 Emergency Duty Team,Emergency Duty Team,ADULT MENTAL ILLNESS,Adult,Community,Whole County
+5842,02/07/2016,03/07/2016,Area 27 AMHP,AMHP,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+5842,06/08/2016,,Pathfinder,Pathfinder,FORENSIC PSYCHIATRY,Adult,Community,Whole County
+5842,12/01/2017,,IPP Management,IPP Management,FORENSIC PSYCHIATRY,Adult,Community,Whole County
+5842,27/11/2017,,Forensics,Forensics,FORENSIC PSYCHIATRY,Adult,Community,Whole County
+5865,22/02/2016,13/04/2016,Area 25 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+5865,25/07/2016,25/07/2016,Liaison Psychiatry Area 30,Liaison Psychiatry,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+5865,26/05/2016,01/06/2016,Area 25 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+5865,17/08/2016,,Area 3a CMHT,CMHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+5865,04/09/2016,04/09/2016,Liaison Psychiatry Area 30,Liaison Psychiatry,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+5865,08/09/2016,08/09/2016,Liaison Psychiatry Area 30,Liaison Psychiatry,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+5865,20/10/2016,20/10/2016,Liaison Psychiatry Area 30,Liaison Psychiatry,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+5865,24/12/2016,24/12/2016,Liaison Psychiatry Area 30,Liaison Psychiatry,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+5865,05/01/2017,,Area 30 Area 29 PPT,PPT,PSYCHOTHERAPY,Adult,Community,Locality 2
+5865,07/03/2017,07/03/2017,Liaison Psychiatry Area 30,Liaison Psychiatry,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+5865,28/02/2017,28/02/2017,Liaison Psychiatry Area 30,Liaison Psychiatry,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+5910,20/03/2016,22/03/2016,Area 29 CRHT,CRHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+5910,04/06/2016,04/06/2016,Area 29 CRHT,CRHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+5910,03/04/2016,14/04/2016,Area 29 CRHT,CRHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+5997,19/05/2016,23/08/2016,Area 30 PAR STEP,PAR STEP,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+5997,13/03/2017,,Area 4 CMHT,CMHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+5997,25/12/2017,25/12/2017,Liaison Psychiatry Area 30,Liaison Psychiatry,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+6111,08/11/2016,10/12/2016,Area 25 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+6111,22/07/2017,05/11/2017,Area 25 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+6341,23/03/2017,29/06/2017,Area 25 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+6341,07/05/2017,,Area 4 CMHT,CMHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+6341,13/10/2017,,WorkWays,WorkWays,ADULT MENTAL ILLNESS,Adult,Community,Whole County
+6423,12/05/2017,12/05/2017,Liaison Psychiatry Area 30,Liaison Psychiatry,LIAISON PSYCHIATRY,Adult,Community,Locality 2
+6423,15/07/2017,19/07/2017,Crediton CMHT,CMHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+6547,14/10/2017,06/01/2018,Area 11 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+6547,05/01/2018,,Area 10 Community Mental Health,Community Mental Health,ADULT MENTAL ILLNESS,Adult,Community,Locality 3
+6569,16/11/2017,10/12/2017,Area 25 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+6569,11/09/2017,,Area 28 CMHT,CMHT,ADULT MENTAL ILLNESS,Adult,Community,Locality 2
+6606,29/09/2017,02/11/2017,Area 32 Perinatal Service,Perinatal Service,PERINATAL,Adult,Community,Locality 3
+6613,09/10/2017,25/10/2017,Area 24 MHAT,MHAT,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+6613,15/01/2018,,Area 31 Adult Community Sector C,Adult Community,ADULT MENTAL ILLNESS,Adult,Community,Locality 1
+89,13/04/2015,17/04/2015,Ward 1,Ward,ADULT MENTAL ILLNESS,Adult,Inpatient,Locality 1
+89,30/08/2015,02/09/2015,Ward 2,Ward,ADULT MENTAL ILLNESS,Adult,Inpatient,Locality 2
+89,11/07/2015,25/07/2015,Ward 3,Ward,ADULT MENTAL ILLNESS,Adult,Inpatient,Locality 2
+89,02/08/2015,09/09/2015,Ward 2,Ward,ADULT MENTAL ILLNESS,Adult,Inpatient,Locality 2
+89,21/07/2016,28/08/2016,Ward 2,Ward,ADULT MENTAL ILLNESS,Adult,Inpatient,Locality 2
+89,11/11/2016,15/11/2016,Ward 2,Ward,ADULT MENTAL ILLNESS,Adult,Inpatient,Locality 2
+89,07/02/2017,21/02/2017,Ward 1,Ward,ADULT MENTAL ILLNESS,Adult,Inpatient,Locality 1
+89,25/11/2017,,Ward 2,Ward,ADULT MENTAL ILLNESS,Adult,Inpatient,Locality 2
+356,26/08/2015,10/09/2015,Ward 4,Ward,ADULT MENTAL ILLNESS,Adult,Inpatient,Locality 1
+364,28/06/2016,30/06/2016,Ward 2,Ward,ADULT MENTAL ILLNESS,Adult,Inpatient,Locality 2
+364,21/03/2017,21/03/2017,Ward 4,Ward,ADULT MENTAL ILLNESS,Adult,Inpatient,Locality 1
+471,06/10/2016,10/10/2016,Ward 2,Ward,ADULT MENTAL ILLNESS,Adult,Inpatient,Locality 2
+471,23/10/2016,09/12/2016,Ward 5,Ward,ADULT MENTAL ILLNESS,Adult,Inpatient,Locality 3
+471,07/12/2016,18/01/2017,Ward 2,Ward,ADULT MENTAL ILLNESS,Adult,Inpatient,Locality 2
+708,01/12/2014,24/12/2014,Ward 2,Ward,ADULT MENTAL ILLNESS,Adult,Inpatient,Locality 2
+708,07/02/2015,11/03/2015,Ward 2,Ward,ADULT MENTAL ILLNESS,Adult,Inpatient,Locality 2
+708,17/04/2015,25/04/2015,Ward 2,Ward,ADULT MENTAL ILLNESS,Adult,Inpatient,Locality 2
+708,23/05/2015,28/05/2015,Ward 3,Ward,ADULT MENTAL ILLNESS,Adult,Inpatient,Locality 2
+708,22/07/2015,08/10/2015,Ward 2,Ward,ADULT MENTAL ILLNESS,Adult,Inpatient,Locality 2
+708,05/12/2015,08/02/2016,Ward 2,Ward,ADULT MENTAL ILLNESS,Adult,Inpatient,Locality 2
+708,20/07/2016,28/07/2016,Ward 5,Ward,ADULT MENTAL ILLNESS,Adult,Inpatient,Locality 3
+708,24/08/2016,14/11/2016,Ward 3,Ward,ADULT MENTAL ILLNESS,Adult,Inpatient,Locality 2
+984,05/03/2017,05/03/2017,Ward 2,Ward,ADULT MENTAL ILLNESS,Adult,Inpatient,Locality 2
+1542,13/12/2014,26/05/2015,Ward 4,Ward,ADULT MENTAL ILLNESS,Adult,Inpatient,Locality 1
+1542,10/04/2015,19/03/2016,Clinic 1,Clinic,ADULT MENTAL ILLNESS,Adult,Inpatient,Whole County
+1653,31/10/2014,10/11/2014,Ward 5,Ward,ADULT MENTAL ILLNESS,Adult,Inpatient,Locality 3
+1653,23/01/2015,14/02/2015,Ward 5,Ward,ADULT MENTAL ILLNESS,Adult,Inpatient,Locality 3
+1653,17/10/2015,21/10/2015,Ward 5,Ward,ADULT MENTAL ILLNESS,Adult,Inpatient,Locality 3
+1653,06/08/2016,24/08/2016,Ward 2,Ward,ADULT MENTAL ILLNESS,Adult,Inpatient,Locality 2
+1653,30/09/2016,13/03/2017,Ward 5,Ward,ADULT MENTAL ILLNESS,Adult,Inpatient,Locality 3
+2491,12/12/2015,16/02/2016,Ward 5,Ward,ADULT MENTAL ILLNESS,Adult,Inpatient,Locality 3
+2491,25/12/2015,27/04/2016,Ward 6,Ward,OLD AGE PSYCHIATRY,Old Age,Inpatient,Locality 3
+2859,21/04/2015,18/05/2015,Ward 2,Ward,ADULT MENTAL ILLNESS,Adult,Inpatient,Locality 2
+3688,16/11/2015,17/11/2015,Ward 3,Ward,ADULT MENTAL ILLNESS,Adult,Inpatient,Locality 2
+3688,09/11/2015,23/11/2015,Ward 5,Ward,ADULT MENTAL ILLNESS,Adult,Inpatient,Locality 3
+3688,02/12/2015,13/12/2015,Ward 5,Ward,ADULT MENTAL ILLNESS,Adult,Inpatient,Locality 3
+3688,10/01/2016,15/01/2016,Ward 5,Ward,ADULT MENTAL ILLNESS,Adult,Inpatient,Locality 3
+4474,02/05/2015,15/05/2015,Ward 3,Ward,ADULT MENTAL ILLNESS,Adult,Inpatient,Locality 2
+4474,12/08/2015,13/08/2015,Ward 2,Ward,ADULT MENTAL ILLNESS,Adult,Inpatient,Locality 2
+4812,20/10/2014,24/10/2014,Ward 3,Ward,ADULT MENTAL ILLNESS,Adult,Inpatient,Locality 2
+5006,03/11/2015,22/11/2015,Ward 7,Ward,OLD AGE PSYCHIATRY,Old Age,Inpatient,Locality 1
+5035,06/01/2016,13/01/2016,Ward 3,Ward,ADULT MENTAL ILLNESS,Adult,Inpatient,Locality 2
+5227,11/07/2015,09/09/2015,Ward 6,Ward,OLD AGE PSYCHIATRY,Old Age,Inpatient,Locality 3
+5227,15/03/2016,14/04/2016,Ward 8,Ward,OLD AGE PSYCHIATRY,Old Age,Inpatient,Locality 2
+5227,14/03/2016,22/04/2016,Ward 9,Ward,OLD AGE PSYCHIATRY,Old Age,Inpatient,Locality 2
+5227,21/03/2016,25/06/2016,Ward 6,Ward,OLD AGE PSYCHIATRY,Old Age,Inpatient,Locality 3
+5519,27/10/2015,14/11/2015,Ward 4,Ward,ADULT MENTAL ILLNESS,Adult,Inpatient,Locality 1
+5602,16/04/2017,17/04/2017,Ward 8,Ward,OLD AGE PSYCHIATRY,Old Age,Inpatient,Locality 2
+5602,28/03/2017,02/05/2017,Ward 9,Ward,OLD AGE PSYCHIATRY,Old Age,Inpatient,Locality 2
+5602,09/01/2018,,Ward 9,Ward,OLD AGE PSYCHIATRY,Old Age,Inpatient,Locality 2
+5695,23/10/2016,24/10/2016,Ward 9,Ward,OLD AGE PSYCHIATRY,Old Age,Inpatient,Locality 2
+5695,03/10/2016,28/04/2017,Ward 7,Ward,OLD AGE PSYCHIATRY,Old Age,Inpatient,Locality 1
+5695,30/05/2017,05/09/2017,Ward 7,Ward,OLD AGE PSYCHIATRY,Old Age,Inpatient,Locality 1
+5910,26/03/2016,29/03/2016,Ward 2,Ward,ADULT MENTAL ILLNESS,Adult,Inpatient,Locality 2
+89,19/10/2017,27/10/2016,OOA ward 9,OOA ward,PICU,Adult,OOA,Out-of-Area
+89,12/10/2017,21/10/2017,OOA ward 1,OOA ward,PICU,Adult,OOA,Out-of-Area
+471,19/10/2016,15/11/2016,OOA ward 2,OOA ward,PICU,Adult,OOA,Out-of-Area
+708,06/10/2014,31/10/2014,OOA ward 3,OOA ward,PICU,Adult,OOA,Out-of-Area
+708,15/04/2015,28/04/2015,OOA ward 4,OOA ward,PICU,Adult,OOA,Out-of-Area
+708,02/10/2015,24/11/2015,OOA ward 5,OOA ward,PICU,Adult,OOA,Out-of-Area
+708,28/03/2016,11/06/2016,OOA ward 5,OOA ward,PICU,Adult,OOA,Out-of-Area
+1653,25/07/2015,02/08/2015,OOA ward 9,OOA ward,PICU,Adult,OOA,Out-of-Area
+3688,30/12/2015,01/01/2016,Other local bed 1,Other local bed,Step Down Beds (Cypress),Adult,Other local beds,Locality 3
+4474,05/04/2015,01/05/2015,OOA ward 6,OOA ward,PICU,Adult,OOA,Out-of-Area
+4474,14/04/2015,11/05/2015,Other local bed 2,Other local bed,Step Down Beds (Park View/Chapter 1),Adult,Other local beds,Locality 2
+5842,24/12/2017,31/01/2018,OOA ward 7,OOA ward,PICU,Adult,OOA,Out-of-Area

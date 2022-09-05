@@ -229,7 +229,6 @@ def get_cleaning_page():
         ]
 
 
-elements = []
 slider = DateSlider(start_date=date(day=1, month=1, year=2000), end_date=date(day=1, month=1, year=2050), slice_size=1,
                     slice_resolution='Year')
 fig = {}
@@ -237,10 +236,10 @@ fig = {}
 
 
 
+# List of all analysis instances
+analysis_instances = [AnalysisInstance(), AnalysisInstance(), AnalysisInstance()]
 
-analysis_instances = [AnalysisInstance("2"), AnalysisInstance("3"), AnalysisInstance("4")]
 
-analysis_instance = AnalysisInstance(analysis_name="1")
 
 
 # VISUALISATION
@@ -255,31 +254,8 @@ def get_visualisation_page():
                     style={'text-align': 'center', 'font-size': '40px', 'top': '50%', 'position': 'relative'}),
         ]
     else:
-        return [analysis_instance.get(),
-                """
-                html.Div(
-                children=[
-                    dcc.DatePickerRange(id='date_picker', style={'width': '25vw'}, display_format='DD/MM/YYYY',
-                                        start_date=date(day=1, month=1, year=2000), end_date=date(day=1, month=1, year=2050)),
-                ],
-                style={'margin': 'auto', 'width': '25vw'}
+        return [analysis_instances[a].get() for a in range(len(analysis_instances))
 
-                ),
-
-                dcc.Dropdown(id='dropdown', options=['Year', 'Month', 'Day'], style={'width': '200px', 'margin': '20px'},
-                            value='Year', clearable=False),
-                dcc.Input(id='slice_size_input', value=1, style={'width': '200px', 'margin': '40px'}, required=True, min=1),
-                html.Div(
-                    children=slider.get_slider(),
-                    style={'height': '150px', 'width': '80%'},
-                    id='date_slider_container'
-                ),
-                network1.get_cytoscape_graph('main_graph'),
-                html.Button("Toggle in/out", id='toggle', style={'width': '15vw', 'height': '10vw'}),
-                html.H1(id='in/out_text', children=toggle_value, style={'margin': '10px'}),
-                network1.get_specific_node_cytoscape_graph('sub_graph', 'out'),
-                dcc.Graph(figure=fig, id='graph'),
-"""
                 ]
 
 
@@ -325,24 +301,44 @@ def uploaded(status: du.UploadStatus):
         global file
         file = pd.read_csv(status.latest_file)
         file.columns = [x.lower() for x in file.columns]
-        global network1
-        network1.initialise(file)
+
+        for i in range(3):
+            analysis_instances[i].initialise(str(i), file)
 
 
+        #print("THIS IS THE INFO THAT YOU'RE LOOKING FOR")
+        #data = network1.iterate(date(day=1, month=1, year=2008), date(day=1, month=1, year=2019), 1, "Day", "CMHT")
+        #print(data)
 
-        print("THIS IS THE INFO THAT YOU'RE LOOKING FOR")
-        data = network1.iterate(date(day=1, month=1, year=2008), date(day=1, month=1, year=2019), 1, "Day", "CMHT")
-        print(data)
+        #d = {'col1': [i for i in range(len(data))], 'col2': data}
+        #global fig
+        #fig = px.bar(d, x="col1", y="col2", title="This is my graph")
 
-        d = {'col1': [i for i in range(len(data))], 'col2': data}
-        global fig
-        fig = px.bar(d, x="col1", y="col2", title="This is my graph")
-
-
-        global elements
-        elements = network1.get_cytoscape_nodes() + network1.get_cytoscape_edges()
 
         return "THE FILE HAS BEEN UPLOADED"
+
+
+# Deal with all of the callbacks from analysis instances
+@app.callback(
+    (Output(component_id='', component_property='') for i in range(len(analysis_instances))),
+    (Input(component_id='', component_property='') for i in range(len(analysis_instances)))
+)
+def analysis_instance_callbacks():
+    triggered_id = dash.callback_context.triggered_id
+
+    for i in range(len(analysis_instances)):
+        if triggered_id == 0:
+            pass
+
+
+
+
+
+
+
+
+
+
 
 
 # Deal with toggling in/out of specific node graph

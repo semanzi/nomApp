@@ -27,56 +27,50 @@ def get_radial_layout(node_id, nodes_, centre, radius):
 
 
 class NetworkCreator:
-    dataset = None
-    services = None
-    full_cytoscape_nodes = None
-    full_cytoscape_edges = None
-    cytoscape_nodes = None
-    cytoscape_edges = None
-    networkx_graph = None
-    adjacency_matrix = None
-    selected_node = None
+    __dataset = None
+    __services = None
+    __full_cytoscape_nodes = None
+    __full_cytoscape_edges = None
+    __cytoscape_nodes = None
+    __cytoscape_edges = None
+    __networkx_graph = None
+    __adjacency_matrix = None
+    __selected_node = None
 
     def __init__(self):
         pass
 
     # Creates the graph, argument is a clean dataset
     def initialise(self, dataset: pd.DataFrame):
-        self.dataset = dataset
-        self.services = self.get_services()
-        self.create_adjacency_matrix()
+        self.__dataset = dataset
+        self.__services = self.__get_services()
+        self.__create_adjacency_matrix()
         self.create_cytoscape_nodes_and_edges(all_nodes_and_edges=True,
                                               start_date=date(day=1, month=1, year=2000),
                                               end_date=date(day=1, month=1, year=2000))
-        self.full_cytoscape_nodes = self.cytoscape_nodes
-        self.full_cytoscape_edges = self.cytoscape_edges
+        self.__full_cytoscape_nodes = self.__cytoscape_nodes
+        self.__full_cytoscape_edges = self.__cytoscape_edges
         self.create_networkx_nodes_and_edges()
 
-    #def update_graph(self):
+    def __get_services(self):
+        return self.__dataset['service'].drop_duplicates().tolist()
 
-
-
-
-
-    def get_services(self):
-        return self.dataset['service'].drop_duplicates().tolist()
-
-    def create_adjacency_matrix(self):
-        services = self.services
+    def __create_adjacency_matrix(self):
+        services = self.__services
 
         # Create an empty 2x2 matrix containing lists of tuples
         # Tuple layout is (datetime.date(day, month, year), datetime.date(day, month, year))
-        self.adjacency_matrix = [[[] for i in range(len(services))] for j in range(len(services))]
-        num_of_rows = len(self.dataset)
+        self.__adjacency_matrix = [[[] for i in range(len(services))] for j in range(len(services))]
+        num_of_rows = len(self.__dataset)
         prev_row = 0
         next_row = 1
         for i in range(num_of_rows - 1):
-            prev_row_id = self.dataset.loc[prev_row]['id']
-            next_row_id = self.dataset.loc[next_row]['id']
-            prev_row_service = self.dataset.loc[prev_row]['service']
-            next_row_service = self.dataset.loc[next_row]['service']
-            prev_row_start_time = str(self.dataset.loc[prev_row]['referraldate'])
-            next_row_end_time = str(self.dataset.loc[next_row]['dischargedate'])
+            prev_row_id = self.__dataset.loc[prev_row]['id']
+            next_row_id = self.__dataset.loc[next_row]['id']
+            prev_row_service = self.__dataset.loc[prev_row]['service']
+            next_row_service = self.__dataset.loc[next_row]['service']
+            prev_row_start_time = str(self.__dataset.loc[prev_row]['referraldate'])
+            next_row_end_time = str(self.__dataset.loc[next_row]['dischargedate'])
             if next_row_id == prev_row_id:
                 # same patient
                 index = [0, 0]
@@ -104,7 +98,7 @@ class NetworkCreator:
                              date(day=day_end,
                                            month=month_end,
                                            year=year_end))
-                self.adjacency_matrix[index[0]][index[1]].append(time_data)
+                self.__adjacency_matrix[index[0]][index[1]].append(time_data)
 
             prev_row += 1
             next_row += 1
@@ -112,9 +106,9 @@ class NetworkCreator:
     def create_cytoscape_nodes_and_edges(self, all_nodes_and_edges: bool, start_date: date, end_date: date):
         nodes = []
         edges = []
-        active_services = [False for i in range(len(self.services))]
+        active_services = [False for i in range(len(self.__services))]
 
-        services = self.services
+        services = self.__services
 
         # Add necessary nodes
         if all_nodes_and_edges:
@@ -125,14 +119,14 @@ class NetworkCreator:
         for i in range(len(services)):
             for j in range(len(services)):
                 if all_nodes_and_edges:
-                    weight = len(self.adjacency_matrix[i][j])
+                    weight = len(self.__adjacency_matrix[i][j])
                     if weight > 0:
                         edge = [{'data': {'source': services[i], 'target': services[j],
                                           'weight': weight}}]
                         edges += edge
 
                 else:
-                    instances = self.adjacency_matrix[i][j]
+                    instances = self.__adjacency_matrix[i][j]
                     if len(instances) > 0:
                         num_of_edges = 0
                         for k in range(len(instances)):
@@ -156,20 +150,20 @@ class NetworkCreator:
                 if active_services[a]:
                     nodes += [{'data': {'id': str(services[a]), 'label': str(services[a])}}]
 
-        self.cytoscape_nodes = nodes
-        self.cytoscape_edges = edges
+        self.__cytoscape_nodes = nodes
+        self.__cytoscape_edges = edges
         self.create_networkx_nodes_and_edges()
 
     def get_cytoscape_nodes(self):
-        return self.cytoscape_nodes
+        return self.__cytoscape_nodes
 
     def get_cytoscape_edges(self):
-        return self.cytoscape_edges
+        return self.__cytoscape_edges
 
     def get_cytoscape_graph(self, graph_name: str):
 
         return cyto.Cytoscape(id=graph_name,
-                              elements=self.cytoscape_nodes + self.cytoscape_edges,
+                              elements=self.__cytoscape_nodes + self.__cytoscape_edges,
                               layout={
                                   'name': 'cose',
                                   'gravity': '0.01',
@@ -206,7 +200,7 @@ class NetworkCreator:
                               )
 
     def set_selected_node(self, selected_node):
-        self.selected_node = selected_node
+        self.__selected_node = selected_node
 
     def get_specific_node_cytoscape_graph(self, graph_name: str, in_or_out: str):
         elements = self.get_specific_node_elements(in_or_out)
@@ -253,12 +247,12 @@ class NetworkCreator:
                               )
 
     def get_specific_node_elements(self, in_or_out: str):
-        node_id = self.selected_node
+        node_id = self.__selected_node
         if node_id is None:
             return []
 
-        nodes = self.cytoscape_nodes
-        edges = self.cytoscape_edges
+        nodes = self.__cytoscape_nodes
+        edges = self.__cytoscape_edges
 
         selected_nodes = [{'data': {'id': str(node_id), 'label': str(node_id)}}]
         selected_edges = []
@@ -278,30 +272,30 @@ class NetworkCreator:
 
 
     def create_networkx_nodes_and_edges(self):
-        self.networkx_graph = nx.DiGraph()
+        self.__networkx_graph = nx.DiGraph()
 
         # Add nodes and edges from cytoscape
-        for i in range(len(self.cytoscape_nodes)):
-            self.networkx_graph.add_node(self.cytoscape_nodes[i]['data']['id'])
-        for i in range(len(self.cytoscape_edges)):
-            self.networkx_graph.add_edge(self.cytoscape_edges[i]['data']['source'],
-                                         self.cytoscape_edges[i]['data']['target'],
-                                         weight=int(self.cytoscape_edges[i]['data']['weight'])
-                                         )
+        for i in range(len(self.__cytoscape_nodes)):
+            self.__networkx_graph.add_node(self.__cytoscape_nodes[i]['data']['id'])
+        for i in range(len(self.__cytoscape_edges)):
+            self.__networkx_graph.add_edge(self.__cytoscape_edges[i]['data']['source'],
+                                           self.__cytoscape_edges[i]['data']['target'],
+                                           weight=int(self.__cytoscape_edges[i]['data']['weight'])
+                                           )
 
 
 ##### GRAPH METRICS #####
 
     def get_degree_centrality(self, node: str):
-        degree_centralities = nx.degree_centrality(self.networkx_graph)
+        degree_centralities = nx.degree_centrality(self.__networkx_graph)
         return degree_centralities[node]
 
     def get_eigenvector_centrality(self):
-        eigenvector_centrality = nx.eigenvector_centrality(self.networkx_graph)
+        eigenvector_centrality = nx.eigenvector_centrality(self.__networkx_graph)
         return eigenvector_centrality
 
     def get_betweenness_centrality(self, node: str):
-        betweenness_centralities = nx.betweenness_centrality(self.networkx_graph)
+        betweenness_centralities = nx.betweenness_centrality(self.__networkx_graph)
         return betweenness_centralities[node]
 
 
@@ -312,10 +306,10 @@ class NetworkCreator:
         # Create networkX graph for each time slice
         # Graph networkX stats
 
-        matrix = self.adjacency_matrix
+        matrix = self.__adjacency_matrix
 
-        for i in range(len(self.services)):
-            if self.services[i] == node:
+        for i in range(len(self.__services)):
+            if self.__services[i] == node:
                 node_number = i
 
         data = []
@@ -331,8 +325,8 @@ class NetworkCreator:
                 temp_graph = nx.Graph()
 
                 # Iterate over adjacency matrix
-                for i in range(len(self.services)):
-                    for j in range(len(self.services)):
+                for i in range(len(self.__services)):
+                    for j in range(len(self.__services)):
                         instances_of_edge = matrix[i][j]
                         # Iterate through instances of edges
                         num_of_active_patients = 0
@@ -363,8 +357,8 @@ class NetworkCreator:
                 temp_graph = nx.Graph()
 
                 # Iterate over adjacency matrix
-                for i in range(len(self.services)):
-                    for j in range(len(self.services)):
+                for i in range(len(self.__services)):
+                    for j in range(len(self.__services)):
                         instances_of_edge = matrix[i][j]
                         # Iterate through instances of edges
                         num_of_active_patients = 0
@@ -402,8 +396,8 @@ class NetworkCreator:
                 temp_graph = nx.Graph()
 
                 # Iterate over adjacency matrix
-                for i in range(len(self.services)):
-                    for j in range(len(self.services)):
+                for i in range(len(self.__services)):
+                    for j in range(len(self.__services)):
                         instances_of_edge = matrix[i][j]
                         num_of_active_patients = 0
 
