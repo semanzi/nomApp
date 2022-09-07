@@ -10,16 +10,18 @@ class DateSlider:
     slice_size = None
     slice_resolution = None
     marks = None
+    id = None
 
     slider = None
 
-    dates = None
+    length = None
 
-    def __init__(self, start_date: date, end_date: date, slice_size: int, slice_resolution: str):
+    def __init__(self, id: str, start_date: date, end_date: date, slice_size: int, slice_resolution: str):
         self.start_date = start_date
         self.end_date = end_date
         self.slice_size = slice_size
         self.slice_resolution = slice_resolution
+        self.id = id
 
         self.update_slider(start_date, end_date, slice_size, slice_resolution)
 
@@ -37,6 +39,8 @@ class DateSlider:
             num_of_marks = math.floor(num_of_years / self.slice_size)
             remainder = num_of_marks % self.slice_size
 
+            self.length = num_of_marks + 1
+
             self.marks = {}
             for i in range(num_of_marks + 1):
                 current_year = self.start_date.year + (i * self.slice_size)
@@ -50,11 +54,11 @@ class DateSlider:
                                    }
                                   )
 
-            self.slider = dcc.RangeSlider(id='date_slider',
+            self.slider = dcc.RangeSlider(id=self.id,
                                           min=0,
                                           max=num_of_marks,
                                           step=1, allowCross=False,
-                                          marks=self.marks)
+                                          marks=self.marks, value=[0, num_of_marks + 1])
 
         elif self.slice_resolution == "Month":
             num_of_years_between = self.end_date.year - self.start_date.year - 1
@@ -65,6 +69,8 @@ class DateSlider:
             whole_marks = math.floor(num_of_months / self.slice_size)
             remainder = num_of_months % self.slice_size
             num_of_marks = whole_marks
+
+            self.length = num_of_marks
 
             self.marks = {}
             current_month = self.start_date.month
@@ -84,7 +90,7 @@ class DateSlider:
                     current_month = 1
                     current_year += 1
 
-            self.slider = dcc.RangeSlider(id='date_slider',
+            self.slider = dcc.RangeSlider(id=self.id,
                                           min=0,
                                           max=num_of_marks - 1,
                                           step=1, allowCross=False,
@@ -95,6 +101,9 @@ class DateSlider:
             whole_marks = math.floor(num_of_days / self.slice_size)
             remainder = num_of_days % self.slice_size
             num_of_marks = whole_marks + 1
+
+            self.length = num_of_marks
+
             self.marks = {}
             for i in range(num_of_marks):
                 current_date = self.start_date + timedelta(days=(self.slice_size * i))
@@ -108,7 +117,7 @@ class DateSlider:
                                    }
                                   )
 
-            self.slider = dcc.RangeSlider(id='date_slider',
+            self.slider = dcc.RangeSlider(id=self.id,
                                           min=0,
                                           max=num_of_marks - 1,
                                           step=1, allowCross=False,

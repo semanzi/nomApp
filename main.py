@@ -48,7 +48,7 @@ app.layout = html.Div(
         html.Div(
             id='page-viewer',
             children=[],
-            style={'background-color': '#D6FDFF', 'width': '100vw', 'height': '100vh', 'position': 'relative',
+            style={'background-color': '#D6FDFF', 'width': '100vw', 'height': '1000vh', 'position': 'relative',
                    'top': '12vw', 'left': '0px', 'margin': '0px', 'padding': '0px'}
 
         ),
@@ -193,7 +193,7 @@ def get_cleaning_page():
     if file is None:
         return [
             html.H1("No dataset has been imported, please go to the \"Import Data\" page and import a dataset",
-                    style={'text-align': 'center', 'font-size': '40px', 'top': '50%', 'position': 'relative'}),
+                    style={'text-align': 'center', 'font-size': '40px', 'top': '50vh', 'position': 'relative'}),
         ]
     else:
         summary = summarise_data(file)
@@ -229,8 +229,7 @@ def get_cleaning_page():
         ]
 
 
-slider = DateSlider(start_date=date(day=1, month=1, year=2000), end_date=date(day=1, month=1, year=2050), slice_size=1,
-                    slice_resolution='Year')
+
 fig = {}
 
 
@@ -251,10 +250,10 @@ def get_visualisation_page():
     if file is None:
         return [
             html.H1("No dataset has been imported, please go to the \"Import Data\" page and import a dataset",
-                    style={'text-align': 'center', 'font-size': '40px', 'top': '50%', 'position': 'relative'}),
+                    style={'text-align': 'center', 'font-size': '40px', 'top': '50vh', 'position': 'relative'}),
         ]
     else:
-        return [analysis_instances[a].get() for a in range(len(analysis_instances))
+        return [analysis_instances[a].get_layout() for a in range(len(analysis_instances))
 
                 ]
 
@@ -318,111 +317,83 @@ def uploaded(status: du.UploadStatus):
         return "THE FILE HAS BEEN UPLOADED"
 
 
-# Deal with all of the callbacks from analysis instances
+
+
+
+
+# Deal with all the callbacks from analysis instances
 @app.callback(
-    (Output(component_id='', component_property='') for i in range(len(analysis_instances))),
-    (Input(component_id='', component_property='') for i in range(len(analysis_instances)))
+    # Callbacks for instance 0
+    Output(component_id='instance0date_slider_container', component_property='children'),
+    Output(component_id='instance0main_graph', component_property='elements'),
+    Output(component_id='instance0sub_graph', component_property='elements'),
+    Output(component_id='instance0plot', component_property='figure'),
+    Input(component_id='instance0date_range_picker', component_property='start_date'),
+    Input(component_id='instance0date_range_picker', component_property='end_date'),
+    Input(component_id='instance0date_resolution', component_property='value'),
+    Input(component_id='instance0slice_size', component_property='value'),
+    Input(component_id='instance0date_slider', component_property='value'),
+    Input(component_id='instance0main_graph', component_property='tapNodeData'),
+    Input(component_id='instance0toggle', component_property='n_clicks'),
+    Input(component_id='instance0metric', component_property='value'),
+    State(component_id='instance0date_slider_container', component_property='children'),
+    State(component_id='instance0main_graph', component_property='elements'),
+    State(component_id='instance0sub_graph', component_property='elements'),
+    State(component_id='instance0plot', component_property='figure')
 )
-def analysis_instance_callbacks():
-    triggered_id = dash.callback_context.triggered_id
+def analysis_instance_callbacks(start_date0, end_date0, date_resolution0, slice_size0, slider_values0, selected_node0, toggle0, metric0, current_slider0, current_main_graph_elements0, current_sub_graph_elements0, current_plot0):
+    triggered_id = str(dash.callback_context.triggered_id)
+    global analysis_instances
 
-    for i in range(len(analysis_instances)):
-        if triggered_id == 0:
-            pass
+    if triggered_id.__contains__('0'):
+        if triggered_id == "instance0date_range_picker":
+            start_date = datetime.strptime(start_date0, '%Y-%m-%d').date()
+            end_date = datetime.strptime(end_date0, '%Y-%m-%d').date()
+            analysis_instances[0].set_date_range(start_date, end_date)
+            return analysis_instances[0].get_slider(), current_main_graph_elements0, current_sub_graph_elements0, current_plot0
 
+        if triggered_id == "instance0date_resolution":
+            analysis_instances[0].set_date_resolution(date_resolution0)
+            return analysis_instances[0].get_slider(), current_main_graph_elements0, current_sub_graph_elements0, current_plot0
 
+        if triggered_id == "instance0slice_size":
+            if slice_size0 is None:
+                analysis_instances[0].set_slice_size(1)
+            else:
+                analysis_instances[0].set_slice_size(int(slice_size0))
+            return analysis_instances[0].get_slider(), current_main_graph_elements0, current_sub_graph_elements0, current_plot0
 
+        if triggered_id == "instance0date_slider":
+            analysis_instances[0].slider_start_pos = slider_values0[0]
+            analysis_instances[0].slider_end_pos = slider_values0[1]
+            new_main_graph_elements = analysis_instances[0].update_main_graph(slider_values0[0], slider_values0[1])
+            new_sub_graph_elements = analysis_instances[0].get_specific_node_elements()
+            data = analysis_instances[0].get_plot()
 
+            return current_slider0, \
+                   new_main_graph_elements, \
+                   new_sub_graph_elements, \
+                   px.bar(x=[i for i in range(len(data))], y=[data[i] for i in range(len(data))], labels={'x': 'date', 'y': analysis_instances[0].selected_metric}, title="Graph showing " + analysis_instances[0].selected_metric + ", for the node: " + analysis_instances[0].selected_node)
 
+        if triggered_id == "instance0main_graph":
+            analysis_instances[0].set_selected_node(selected_node0['label'])
+            data = analysis_instances[0].get_plot()
+            return current_slider0, \
+                   current_main_graph_elements0, \
+                   analysis_instances[0].get_specific_node_elements(), \
+                   px.bar(x=[i for i in range(len(data))], y=[data[i] for i in range(len(data))], labels={'x': 'date', 'y': analysis_instances[0].selected_metric}, title="Graph showing " + analysis_instances[0].selected_metric + ", for the node: " + analysis_instances[0].selected_node)
 
+        if triggered_id == "instance0toggle":
+            return current_slider0, current_main_graph_elements0, analysis_instances[0].toggle(), current_plot0
 
+        if triggered_id == "instance0metric":
+            analysis_instances[0].selected_metric = metric0
+            data = analysis_instances[0].get_plot()
 
-
-
-
-
-# Deal with toggling in/out of specific node graph
-@app.callback(
-    Output(component_id='sub_graph', component_property='elements'),
-    Output(component_id='in/out_text', component_property='children'),
-    Input(component_id='main_graph', component_property='tapNodeData'),
-    Input(component_id='toggle', component_property='n_clicks')
-)
-def update_selected_node_graph(data, button):
-    print(data)
-    # Toggle button was pressed
-    global toggle_value
-    if toggle_value == 'out':
-        toggle_value = 'in'
-    else:
-        toggle_value = 'out'
-
-    global network1
-    if data:
-        if data is None:
-            # Use previous selected node
-            pass
-        else:
-            # New node selected
-            network1.set_selected_node(str(data['id']))
-
-    return network1.get_specific_node_elements(toggle_value), toggle_value
-
-
-@app.callback(
-    Output(component_id='main_graph', component_property='elements'),
-    Output(component_id='date_slider_container', component_property='children'),
-    Input(component_id='date_picker', component_property='start_date'),
-    Input(component_id='date_picker', component_property='end_date'),
-    Input(component_id='date_slider', component_property='value'),
-    Input(component_id='dropdown', component_property='value'),
-    Input(component_id='slice_size_input', component_property='value'),
-    State(component_id='date_slider_container', component_property='children')
-)
-def date_input(start_date_: str, end_date_: str, date_slider_value, dropdown_value, slice_size_value, current_slider):
-    triggered_id = dash.callback_context.triggered_id
-
-    global network1
-    global slider
-
-    update_selected_node_graph(None, 0)
-
-    if triggered_id == 'date_picker':
-        if start_date_ is not None:
-            start_date = datetime.strptime(start_date_, "%Y-%m-%d").date()
-        else:
-            start_date = date(day=1, month=1, year=1000)
-
-        if end_date_ is not None:
-            end_date = datetime.strptime(end_date_, "%Y-%m-%d").date()
-        else:
-            end_date = date(day=1, month=1, year=9999)
-
-        slider.update_slider(start_date, end_date, slider.slice_size, dropdown_value)
-        network1.create_cytoscape_nodes_and_edges(all_nodes_and_edges=False, start_date=start_date, end_date=end_date)
-        return network1.get_cytoscape_nodes() + network1.get_cytoscape_edges(), slider.get_slider()
-
-    if triggered_id == 'date_slider':
-        start_date = slider.get_date_at_pos(date_slider_value[0])
-        end_date = slider.get_date_at_pos(date_slider_value[1])
-        network1.create_cytoscape_nodes_and_edges(all_nodes_and_edges=False, start_date=start_date, end_date=end_date)
-        return network1.get_cytoscape_nodes() + network1.get_cytoscape_edges(), current_slider
-
-    if triggered_id == 'dropdown':
-        slider.update_slider(slider.start_date, slider.end_date, 1, dropdown_value)
-        # start_date = slider.get_date_at_pos(date_slider_value[0])
-        # end_date = slider.get_date_at_pos(date_slider_value[1])
-        # network1.create_cytoscape_nodes_and_edges(all_nodes_and_edges=False, start_date=start_date, end_date=end_date)
-        return network1.get_cytoscape_nodes() + network1.get_cytoscape_edges(), slider.get_slider()
-
-    if triggered_id == 'slice_size_input':
-        if slice_size_value == "":
-            return network1.get_cytoscape_nodes() + network1.get_cytoscape_edges(), current_slider
-
-        slider.update_slider(slider.start_date, slider.end_date, int(slice_size_value), slider.slice_resolution)
-        return network1.get_cytoscape_nodes() + network1.get_cytoscape_edges(), slider.get_slider()
-
-    return None
+            return current_slider0, \
+                   current_main_graph_elements0, \
+                   current_sub_graph_elements0, \
+                   px.bar(x=[i for i in range(len(data))], y=[data[i] for i in range(len(data))], labels={'x': 'date', 'y': analysis_instances[0].selected_metric}, title="Graph showing " + analysis_instances[0].selected_metric + ", for the node: " + analysis_instances[0].selected_node)
 
 
 if __name__ == '__main__':

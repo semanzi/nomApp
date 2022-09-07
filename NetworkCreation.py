@@ -20,7 +20,7 @@ def get_radial_layout(node_id, nodes_, centre, radius):
             # Orbiting
             angle = angle_count * (360 / num_of_nodes)
             position = (radius * math.cos(math.radians(angle)), radius * math.sin(math.radians(angle)))
-            nodes += [{'data': {'id': str(nodes_[i]['data']['id']), 'label': str(nodes_[i]['data']['id'])}, 'position': {'x': position[0] + centre[0], 'y': position[1] + centre[1]}}]
+            nodes += [{'data': {'id': str(nodes_[i]['data']['id']), 'label': str(nodes_[i]['data']['id'])}, 'position': {'x': position[0] + centre[0], 'y': position[1] + centre[1]}, 'classes': 'non-selected'}]
             angle_count += 1
 
     return nodes
@@ -196,7 +196,7 @@ class NetworkCreator:
                                   }
 
                               ],
-                              style={'width': '25vw', 'height': '25vw', 'background-color': 'white', 'border': 'solid'}
+                              style={'position': 'absolute', 'width': '50%', 'height': '90%', 'margin-top': '20px', 'background-color': 'white', 'border': 'solid', }
                               )
 
     def set_selected_node(self, selected_node):
@@ -239,10 +239,13 @@ class NetworkCreator:
 
                               ],
                               style={
-                                  'width': '25vw',
-                                  'height': '25vw',
+                                  'left': '51%',
+                                  'width': '33%',
+                                  'height': '90%',
+                                  'margin-top': '20px',
                                   'background-color': 'white',
-                                  'border': 'solid'
+                                  'border': 'solid',
+                                  'position': 'absolute'
                               }
                               )
 
@@ -301,12 +304,14 @@ class NetworkCreator:
 
 ##### GRAPH ITERATION #####
 
-    def iterate(self, start_date: date, end_date: date, slice_size: int, slice_resolution: str, node: str):
+    def iterate(self, start_date: date, end_date: date, slice_size: int, slice_resolution: str, node: str, metric: str):
         # Need to iterate through adjacency matrix
         # Create networkX graph for each time slice
         # Graph networkX stats
 
         matrix = self.__adjacency_matrix
+
+        node_number = None
 
         for i in range(len(self.__services)):
             if self.__services[i] == node:
@@ -340,7 +345,16 @@ class NetworkCreator:
                         if num_of_active_patients > 0:
                             temp_graph.add_edge(i, j, weight=num_of_active_patients)
 
-                centrality = nx.betweenness_centrality(temp_graph)
+
+                #find metrics
+                centrality = None
+                if metric == "degree centrality":
+                    centrality = nx.degree_centrality(temp_graph)
+                if metric == "eigenvector centrality":
+                    centrality = nx.eigenvector_centrality(temp_graph)
+                if metric == "betweenness centrality":
+                    centrality = nx.betweenness_centrality(temp_graph)
+
                 if centrality.__contains__(node_number):
                     data += [centrality[node_number]]
                 else:
@@ -373,7 +387,15 @@ class NetworkCreator:
                         if num_of_active_patients > 0:
                             temp_graph.add_edge(i, j, weight=num_of_active_patients)
 
-                centrality = nx.betweenness_centrality(temp_graph)
+                # find metrics
+                centrality = None
+                if metric == "degree centrality":
+                    centrality = nx.degree_centrality(temp_graph)
+                if metric == "eigenvector centrality":
+                    centrality = nx.eigenvector_centrality(temp_graph)
+                if metric == "betweenness centrality":
+                    centrality = nx.betweenness_centrality(temp_graph)
+
                 if centrality.__contains__(node_number):
                     data += [centrality[node_number]]
                 else:
@@ -410,7 +432,15 @@ class NetworkCreator:
                         if num_of_active_patients > 0:
                             temp_graph.add_edge(i, j, weight=num_of_active_patients)
 
-                centrality = nx.betweenness_centrality(temp_graph)
+                # find metrics
+                centrality = None
+                if metric == "degree centrality":
+                    centrality = nx.degree_centrality(temp_graph)
+                if metric == "eigenvector centrality":
+                    centrality = nx.eigenvector_centrality(temp_graph)
+                if metric == "betweenness centrality":
+                    centrality = nx.betweenness_centrality(temp_graph)
+
                 if centrality.__contains__(node_number):
                     data += [centrality[node_number]]
                 else:
