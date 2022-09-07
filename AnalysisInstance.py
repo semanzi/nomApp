@@ -14,7 +14,7 @@ class AnalysisInstance:
     __network = None
     __toggle_value = "out"
 
-    selected_node = None
+    selected_node = ""
     slider_start_pos = None
     slider_end_pos = None
     selected_metric = "degree centrality"
@@ -80,11 +80,13 @@ class AnalysisInstance:
                 # 1st row - Title and close button
                 html.Div(
                     children=[
-                        html.H1(children=str(self.__instance_id), style={'text-align': 'center',
-                                                'position': 'absolute',
-                                                'width': '100%',
-                                                'left': '0px'
-                                                }
+                        html.H1(children="Instance " + str(self.__instance_id),
+                                style={'text-align': 'center',
+                                       'position': 'absolute',
+                                       'width': '100%',
+                                       'left': '0px',
+                                       'font-family': 'Arial'
+                                       }
                                 ),
                         html.Button(id='close_button_' + self.__instance_id,
                                     children="CLOSE",
@@ -151,7 +153,7 @@ class AnalysisInstance:
                         self.__network.get_specific_node_cytoscape_graph("instance" + str(self.__instance_id) + "sub_graph", "out"),
                         html.Button("TOGGLE IN/OUT", id="instance" + str(self.__instance_id) + "toggle", style={'position': 'absolute', 'left': '85.3%', 'top': '35%', 'width': '14%', 'height': '30%'})
                     ],
-                    style={'position': 'absolute', 'top': '28%', 'width': '100%', 'height': '40%', 'background-color': 'red'}
+                    style={'position': 'absolute', 'top': '28%', 'width': '100%', 'height': '40%'}
 
                 ),
 
@@ -182,7 +184,7 @@ class AnalysisInstance:
                                     ),
                         dcc.Graph(id="instance" + str(self.__instance_id) + "plot", figure=px.bar(x=[0], y=[0], title="EMPTY GRAPH"), style={'position': 'absolute', 'width': '100%', 'height': '90%', 'top': '10%'})
                     ],
-                    style={'position': 'absolute', 'top': '68%', 'width': '100%', 'height': '32%', 'background-color': 'blue'}
+                    style={'position': 'absolute', 'top': '68%', 'width': '100%', 'height': '32%'}
 
                 )
 
@@ -195,7 +197,7 @@ class AnalysisInstance:
             ],
 
 
-            style={'position': 'relative', 'width': '80vw', 'height': '80vw', 'background-color': '#4acc16', 'margin-left': 'auto', 'margin-right': 'auto', 'margin-bottom': '50px', 'border-style': 'solid'}
+            style={'position': 'relative', 'width': '80vw', 'height': '80vw', 'background-color': '#CEF0ED', 'margin-left': 'auto', 'margin-right': 'auto', 'margin-bottom': '50px', 'border-style': 'solid'}
         )
 
 

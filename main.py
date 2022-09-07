@@ -23,20 +23,19 @@ app.layout = html.Div(
         # NAVIGATION BAR
         html.Div(
             children=[
-                dcc.Link('Home', href='/', style={'margin': '10px', 'font-size': '20px'}),
-                dcc.Link('Import Data', href='/Import', style={'margin': '10px', 'font-size': '20px'}),
-                dcc.Link('Data Summary and Cleaning', href='/Cleaning', style={'margin': '10px', 'font-size': '20px'}),
-                dcc.Link('Data Visualisation and Graph Metrics', href='Visualisation',
-                         style={'margin': '10px', 'font-size': '20px'}),
+                dcc.Link('Home', href='/', style={'margin': '10px', 'font-size': '20px', 'background-color': '#F0D9CE', 'padding': '5px'}),
+                dcc.Link('Import Data', href='/Import', style={'margin': '10px', 'font-size': '20px', 'background-color': '#F0D9CE', 'padding': '5px'}),
+                dcc.Link('Data Summary and Cleaning', href='/Cleaning', style={'margin': '10px', 'font-size': '20px', 'background-color': '#F0D9CE', 'padding': '5px'}),
+                dcc.Link('Data Visualisation and Graph Metrics', href='Visualisation', style={'margin': '10px', 'font-size': '20px', 'background-color': '#F0D9CE', 'padding': '5px'}),
                 html.Img(src="https://pbs.twimg.com/media/FRXCr36XwAcpQop?format=jpg&name=large", width='50px',
-                         height='50px', style={'position': 'absolute', 'left': '10px'})
+                         height='50px', style={'position': 'absolute', 'left': '10px', 'background-color': '#F0D9CE', 'padding': '5px'})
             ],
             style={
                 'width': '100vw',
                 'height': '6vw',
                 'top': '0px',
                 'left': '0px',
-                'background-color': '#E6C2AA',
+                'background-color': '#A37E6C',
                 'display': 'flex',
                 'align-items': 'center',
                 'justify-content': 'center',
@@ -48,13 +47,13 @@ app.layout = html.Div(
         html.Div(
             id='page-viewer',
             children=[],
-            style={'background-color': '#D6FDFF', 'width': '100vw', 'height': '1000vh', 'position': 'relative',
+            style={'background-color': '#7CA3A0', 'width': '100vw', 'height': '1000vh', 'position': 'relative',
                    'top': '12vw', 'left': '0px', 'margin': '0px', 'padding': '0px'}
 
         ),
         dcc.Location(id='url', refresh=False)
     ],
-    style={'background-color': '#D6FDFF', 'height': 'auto', 'position': 'absolute', 'left': '0px', 'padding': '0px',
+    style={'background-color': '#7CA3A0', 'height': 'auto', 'position': 'absolute', 'left': '0px', 'padding': '0px',
            'margin': '0px', 'width': '100%'}
 )
 
@@ -193,7 +192,7 @@ def get_cleaning_page():
     if file is None:
         return [
             html.H1("No dataset has been imported, please go to the \"Import Data\" page and import a dataset",
-                    style={'text-align': 'center', 'font-size': '40px', 'top': '50vh', 'position': 'relative'}),
+                    style={'text-align': 'center', 'font-size': '40px', 'top': '25vh', 'position': 'relative'}),
         ]
     else:
         summary = summarise_data(file)
@@ -250,7 +249,7 @@ def get_visualisation_page():
     if file is None:
         return [
             html.H1("No dataset has been imported, please go to the \"Import Data\" page and import a dataset",
-                    style={'text-align': 'center', 'font-size': '40px', 'top': '50vh', 'position': 'relative'}),
+                    style={'text-align': 'center', 'font-size': '40px', 'top': '25vh', 'position': 'relative'}),
         ]
     else:
         return [analysis_instances[a].get_layout() for a in range(len(analysis_instances))
