@@ -2,7 +2,7 @@ import dash
 from dash import html, dcc, Input, Output, State, dash_table
 import dash_uploader as du
 import pandas as pd
-from NetworkCreation import NetworkCreator
+from NetworkCreation import Network
 from DateSlider import DateSlider
 from datetime import datetime, date
 import plotly.express as px
@@ -15,7 +15,7 @@ du.configure_upload(app=app, folder="uploaded_files")
 
 file = None
 dataset_is_clean = False
-network1 = NetworkCreator()
+network1 = Network()
 toggle_value = 'out'
 
 app.layout = html.Div(
@@ -23,10 +23,10 @@ app.layout = html.Div(
         # NAVIGATION BAR
         html.Div(
             children=[
-                dcc.Link('Home', href='/', style={'margin': '10px', 'font-size': '20px', 'background-color': '#F0D9CE', 'padding': '5px'}),
-                dcc.Link('Import Data', href='/Import', style={'margin': '10px', 'font-size': '20px', 'background-color': '#F0D9CE', 'padding': '5px'}),
-                dcc.Link('Data Summary and Cleaning', href='/Cleaning', style={'margin': '10px', 'font-size': '20px', 'background-color': '#F0D9CE', 'padding': '5px'}),
-                dcc.Link('Data Visualisation and Graph Metrics', href='Visualisation', style={'margin': '10px', 'font-size': '20px', 'background-color': '#F0D9CE', 'padding': '5px'}),
+                dcc.Link('Home', href='/', style={'margin': '10px', 'font-size': '20px', 'background-color': '#F0D9CE', 'padding': '5px', 'border-radius': '10px'}),
+                dcc.Link('Import Data', href='/Import', style={'margin': '10px', 'font-size': '20px', 'background-color': '#F0D9CE', 'padding': '5px', 'border-radius': '10px'}),
+                dcc.Link('Data Summary and Cleaning', href='/Cleaning', style={'margin': '10px', 'font-size': '20px', 'background-color': '#F0D9CE', 'padding': '5px', 'border-radius': '10px'}),
+                dcc.Link('Data Visualisation and Graph Metrics', href='Visualisation', style={'margin': '10px', 'font-size': '20px', 'background-color': '#F0D9CE', 'padding': '5px', 'border-radius': '10px'}),
                 html.Img(src="https://pbs.twimg.com/media/FRXCr36XwAcpQop?format=jpg&name=large", width='50px',
                          height='50px', style={'position': 'absolute', 'left': '10px', 'background-color': '#F0D9CE', 'padding': '5px'})
             ],
@@ -48,7 +48,7 @@ app.layout = html.Div(
             id='page-viewer',
             children=[],
             style={'background-color': '#7CA3A0', 'width': '100vw', 'height': '1000vh', 'position': 'relative',
-                   'top': '12vw', 'left': '0px', 'margin': '0px', 'padding': '0px'}
+                   'top': '8vw', 'left': '0px', 'margin': '0px', 'padding': '0px'}
 
         ),
         dcc.Location(id='url', refresh=False)
@@ -303,16 +303,6 @@ def uploaded(status: du.UploadStatus):
         for i in range(3):
             analysis_instances[i].initialise(str(i), file)
 
-
-        #print("THIS IS THE INFO THAT YOU'RE LOOKING FOR")
-        #data = network1.iterate(date(day=1, month=1, year=2008), date(day=1, month=1, year=2019), 1, "Day", "CMHT")
-        #print(data)
-
-        #d = {'col1': [i for i in range(len(data))], 'col2': data}
-        #global fig
-        #fig = px.bar(d, x="col1", y="col2", title="This is my graph")
-
-
         return "THE FILE HAS BEEN UPLOADED"
 
 
@@ -327,6 +317,8 @@ def uploaded(status: du.UploadStatus):
     Output(component_id='instance0main_graph', component_property='elements'),
     Output(component_id='instance0sub_graph', component_property='elements'),
     Output(component_id='instance0plot', component_property='figure'),
+    Output(component_id='instance0metric', component_property='options'),
+    Output(component_id='instance0metric', component_property='value'),
     Input(component_id='instance0date_range_picker', component_property='start_date'),
     Input(component_id='instance0date_range_picker', component_property='end_date'),
     Input(component_id='instance0date_resolution', component_property='value'),
@@ -334,13 +326,16 @@ def uploaded(status: du.UploadStatus):
     Input(component_id='instance0date_slider', component_property='value'),
     Input(component_id='instance0main_graph', component_property='tapNodeData'),
     Input(component_id='instance0toggle', component_property='n_clicks'),
+    Input(component_id='instance0metric_scope', component_property='value'),
     Input(component_id='instance0metric', component_property='value'),
     State(component_id='instance0date_slider_container', component_property='children'),
     State(component_id='instance0main_graph', component_property='elements'),
     State(component_id='instance0sub_graph', component_property='elements'),
-    State(component_id='instance0plot', component_property='figure')
+    State(component_id='instance0plot', component_property='figure'),
+    State(component_id='instance0metric', component_property='options'),
+    State(component_id='instance0metric', component_property='value')
 )
-def analysis_instance_callbacks(start_date0, end_date0, date_resolution0, slice_size0, slider_values0, selected_node0, toggle0, metric0, current_slider0, current_main_graph_elements0, current_sub_graph_elements0, current_plot0):
+def analysis_instance_callbacks(start_date0, end_date0, date_resolution0, slice_size0, slider_values0, selected_node0, toggle0, metric_scope0, metric0, current_slider0, current_main_graph_elements0, current_sub_graph_elements0, current_plot0, current_metric_options0, current_metric_value0):
     triggered_id = str(dash.callback_context.triggered_id)
     global analysis_instances
 
@@ -349,18 +344,24 @@ def analysis_instance_callbacks(start_date0, end_date0, date_resolution0, slice_
             start_date = datetime.strptime(start_date0, '%Y-%m-%d').date()
             end_date = datetime.strptime(end_date0, '%Y-%m-%d').date()
             analysis_instances[0].set_date_range(start_date, end_date)
-            return analysis_instances[0].get_slider(), current_main_graph_elements0, current_sub_graph_elements0, current_plot0
+            return analysis_instances[0].get_slider(), current_main_graph_elements0, current_sub_graph_elements0, current_plot0, current_metric_options0, current_metric_value0
 
         if triggered_id == "instance0date_resolution":
-            analysis_instances[0].set_date_resolution(date_resolution0)
-            return analysis_instances[0].get_slider(), current_main_graph_elements0, current_sub_graph_elements0, current_plot0
+            if date_resolution0 == "Year":
+                analysis_instances[0].set_date_resolution(1)
+            if date_resolution0 == "Month":
+                analysis_instances[0].set_date_resolution(2)
+            if date_resolution0 == "Day":
+                analysis_instances[0].set_date_resolution(3)
+
+            return analysis_instances[0].get_slider(), current_main_graph_elements0, current_sub_graph_elements0, current_plot0, current_metric_options0, current_metric_value0
 
         if triggered_id == "instance0slice_size":
             if slice_size0 is None:
                 analysis_instances[0].set_slice_size(1)
             else:
                 analysis_instances[0].set_slice_size(int(slice_size0))
-            return analysis_instances[0].get_slider(), current_main_graph_elements0, current_sub_graph_elements0, current_plot0
+            return analysis_instances[0].get_slider(), current_main_graph_elements0, current_sub_graph_elements0, current_plot0, current_metric_options0, current_metric_value0
 
         if triggered_id == "instance0date_slider":
             analysis_instances[0].slider_start_pos = slider_values0[0]
@@ -372,7 +373,7 @@ def analysis_instance_callbacks(start_date0, end_date0, date_resolution0, slice_
             return current_slider0, \
                    new_main_graph_elements, \
                    new_sub_graph_elements, \
-                   px.bar(x=[i for i in range(len(data))], y=[data[i] for i in range(len(data))], labels={'x': 'date', 'y': analysis_instances[0].selected_metric}, title="Graph showing " + analysis_instances[0].selected_metric + ", for the node: " + analysis_instances[0].selected_node)
+                   px.line(x=[i for i in range(len(data))], y=[data[i] for i in range(len(data))], labels={'x': 'date', 'y': current_metric_value0}, title="Graph showing " + current_metric_value0 + ", for the node: " + analysis_instances[0].selected_node), current_metric_options0, current_metric_value0
 
         if triggered_id == "instance0main_graph":
             analysis_instances[0].set_selected_node(selected_node0['label'])
@@ -380,19 +381,48 @@ def analysis_instance_callbacks(start_date0, end_date0, date_resolution0, slice_
             return current_slider0, \
                    current_main_graph_elements0, \
                    analysis_instances[0].get_specific_node_elements(), \
-                   px.bar(x=[i for i in range(len(data))], y=[data[i] for i in range(len(data))], labels={'x': 'date', 'y': analysis_instances[0].selected_metric}, title="Graph showing " + analysis_instances[0].selected_metric + ", for the node: " + analysis_instances[0].selected_node)
+                   px.line(x=[i for i in range(len(data))], y=[data[i] for i in range(len(data))], labels={'x': 'date', 'y': current_metric_value0}, title="Graph showing " + current_metric_value0 + ", for the node: " + analysis_instances[0].selected_node), current_metric_options0, current_metric_value0
 
         if triggered_id == "instance0toggle":
-            return current_slider0, current_main_graph_elements0, analysis_instances[0].toggle(), current_plot0
+            return current_slider0, current_main_graph_elements0, analysis_instances[0].toggle(), current_plot0, current_metric_options0, current_metric_value0
+
+        if triggered_id == "instance0metric_scope":
+            if metric_scope0 == "Graph Level":
+                analysis_instances[0].selected_metric_scope = 1
+                analysis_instances[0].selected_metric = 1
+                return current_slider0, current_main_graph_elements0, current_sub_graph_elements0, current_plot0, ['Num of Nodes', 'Num of Edges', 'Average Degree', 'Graph Density', 'Network Modularity'], 'Num of Nodes'
+            else:
+                analysis_instances[0].selected_metric_scope = 2
+                analysis_instances[0].selected_metric = 1
+                return current_slider0, current_main_graph_elements0, current_sub_graph_elements0, current_plot0, ['Degree Centrality', 'Betweenness Centrality', 'Modularity Centrality', 'Eigenvector Centrality'], 'Degree Centrality'
 
         if triggered_id == "instance0metric":
-            analysis_instances[0].selected_metric = metric0
+            if metric0 == "Degree Centrality":
+                analysis_instances[0].selected_metric = 1
+            if metric0 == "Betweenness Centrality":
+                analysis_instances[0].selected_metric = 2
+            if metric0 == "Modularity Centrality":
+                analysis_instances[0].selected_metric = 3
+            if metric0 == "Eigenvector Centrality":
+                analysis_instances[0].selected_metric = 4
+
+            if metric0 == "Num of Nodes":
+                analysis_instances[0].selected_metric = 1
+            if metric0 == "Num of Edges":
+                analysis_instances[0].selected_metric = 2
+            if metric0 == "Average Degree":
+                analysis_instances[0].selected_metric = 3
+            if metric0 == "Graph Density":
+                analysis_instances[0].selected_metric = 4
+            if metric0 == "Network Modularity":
+                analysis_instances[0].selected_metric = 5
+
             data = analysis_instances[0].get_plot()
 
             return current_slider0, \
                    current_main_graph_elements0, \
                    current_sub_graph_elements0, \
-                   px.bar(x=[i for i in range(len(data))], y=[data[i] for i in range(len(data))], labels={'x': 'date', 'y': analysis_instances[0].selected_metric}, title="Graph showing " + analysis_instances[0].selected_metric + ", for the node: " + analysis_instances[0].selected_node)
+                   px.line(x=[i for i in range(len(data))], y=[data[i] for i in range(len(data))], labels={'x': 'date', 'y': metric0}, title="Graph showing " + metric0 + ", for the node: " + analysis_instances[0].selected_node), current_metric_options0, current_metric_value0
 
 
 if __name__ == '__main__':

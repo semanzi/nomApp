@@ -26,7 +26,7 @@ def get_radial_layout(node_id, nodes_, centre, radius):
     return nodes
 
 
-class NetworkCreator:
+class Network:
     __dataset = None
     __services = None
     __full_cytoscape_nodes = None
@@ -196,7 +196,7 @@ class NetworkCreator:
                                   }
 
                               ],
-                              style={'position': 'absolute', 'width': '50%', 'height': '90%', 'margin-top': '20px', 'background-color': 'white', 'border': 'solid', }
+                              style={'position': 'absolute', 'left': '1%', 'width': '50%', 'height': '90%', 'margin-top': '20px', 'background-color': 'white', 'border': 'solid', }
                               )
 
     def set_selected_node(self, selected_node):
@@ -239,7 +239,7 @@ class NetworkCreator:
 
                               ],
                               style={
-                                  'left': '51%',
+                                  'left': '52%',
                                   'width': '33%',
                                   'height': '90%',
                                   'margin-top': '20px',
@@ -287,24 +287,18 @@ class NetworkCreator:
                                            )
 
 
-##### GRAPH METRICS #####
-
-    def get_degree_centrality(self, node: str):
-        degree_centralities = nx.degree_centrality(self.__networkx_graph)
-        return degree_centralities[node]
-
-    def get_eigenvector_centrality(self):
-        eigenvector_centrality = nx.eigenvector_centrality(self.__networkx_graph)
-        return eigenvector_centrality
-
-    def get_betweenness_centrality(self, node: str):
-        betweenness_centralities = nx.betweenness_centrality(self.__networkx_graph)
-        return betweenness_centralities[node]
-
-
 ##### GRAPH ITERATION #####
 
-    def iterate(self, start_date: date, end_date: date, slice_size: int, slice_resolution: str, node: str, metric: str):
+    # start_date -> The first date within range of time to view
+    # end_date -> The final date within range of time to view
+    # slice_resolution -> Year(1), Month(2) or Day(3)
+    # slice_size -> The size of the period of time to view as 1 piece
+    # metric_scope -> Whether to focus on the graph as a whole, or a specific node (value 1 is whole graph, value 2 is selected node)
+    # metric -> The metric to view
+    # Whole graph metrics: Num of nodes(1), Num of edges(2), Average degree(3), Graph density(4), Network modularity(5)
+    # Specific node metrics: Degree(1), Betweenness(2), Modularity(3), Eigenvector(4)
+
+    def iterate(self, start_date: date, end_date: date, slice_resolution: int, slice_size: int, metric_scope: int, metric: int):
         # Need to iterate through adjacency matrix
         # Create networkX graph for each time slice
         # Graph networkX stats
@@ -314,12 +308,12 @@ class NetworkCreator:
         node_number = None
 
         for i in range(len(self.__services)):
-            if self.__services[i] == node:
+            if self.__services[i] == self.__selected_node:
                 node_number = i
 
         data = []
 
-        if slice_resolution == "Year":
+        if slice_resolution == 1:
             start_year = start_date.year
             end_year = end_date.year
             num_of_years = end_year - start_year + 1
@@ -345,24 +339,42 @@ class NetworkCreator:
                         if num_of_active_patients > 0:
                             temp_graph.add_edge(i, j, weight=num_of_active_patients)
 
-
-                #find metrics
+                # find metrics
                 centrality = None
-                if metric == "degree centrality":
-                    centrality = nx.degree_centrality(temp_graph)
-                if metric == "eigenvector centrality":
-                    centrality = nx.eigenvector_centrality(temp_graph)
-                if metric == "betweenness centrality":
-                    centrality = nx.betweenness_centrality(temp_graph)
+                if metric_scope == 1:
+                    # Whole graph
+                    if metric == 1:
+                        data += [nx.number_of_nodes(temp_graph)]
+                    if metric == 2:
+                        data += [nx.number_of_edges(temp_graph)]
+                    if metric == 3:
+                        data += [nx.average_degree_connectivity(temp_graph)]
+                    if metric == 4:
+                        data += [nx.density(temp_graph)]
+                    if metric == 5:
+                        pass
 
-                if centrality.__contains__(node_number):
-                    data += [centrality[node_number]]
+                elif metric_scope == 2:
+                    # Specific node
+                    if metric == 1:
+                        centrality = nx.degree_centrality(temp_graph)
+                    if metric == 2:
+                        centrality = nx.betweenness_centrality(temp_graph)
+                    if metric == 3:
+                        pass
+                    if metric == 4:
+                        centrality = nx.eigenvector_centrality(temp_graph)
+
+                    if centrality.__contains__(node_number):
+                        data += [centrality[node_number]]
+                    else:
+                        data += [0]
                 else:
-                    data += [0]
+                    print("INVALID VALUE FOR metric_scope IN ITERATE METHOD")
 
             return data
 
-        if slice_resolution == "Month":
+        if slice_resolution == 2:
             current_year = start_date.year
             current_month = start_date.month
 
@@ -389,17 +401,36 @@ class NetworkCreator:
 
                 # find metrics
                 centrality = None
-                if metric == "degree centrality":
-                    centrality = nx.degree_centrality(temp_graph)
-                if metric == "eigenvector centrality":
-                    centrality = nx.eigenvector_centrality(temp_graph)
-                if metric == "betweenness centrality":
-                    centrality = nx.betweenness_centrality(temp_graph)
+                if metric_scope == 1:
+                    # Whole graph
+                    if metric == 1:
+                        data += [nx.number_of_nodes(temp_graph)]
+                    if metric == 2:
+                        data += [nx.number_of_edges(temp_graph)]
+                    if metric == 3:
+                        data += [nx.average_degree_connectivity(temp_graph)]
+                    if metric == 4:
+                        data += [nx.density(temp_graph)]
+                    if metric == 5:
+                        pass
 
-                if centrality.__contains__(node_number):
-                    data += [centrality[node_number]]
+                elif metric_scope == 2:
+                    # Specific node
+                    if metric == 1:
+                        centrality = nx.degree_centrality(temp_graph)
+                    if metric == 2:
+                        centrality = nx.betweenness_centrality(temp_graph)
+                    if metric == 3:
+                        pass
+                    if metric == 4:
+                        centrality = nx.eigenvector_centrality(temp_graph)
+
+                    if centrality.__contains__(node_number):
+                        data += [centrality[node_number]]
+                    else:
+                        data += [0]
                 else:
-                    data += [0]
+                    print("INVALID VALUE FOR metric_scope IN ITERATE METHOD")
 
                 current_month += 1
                 if current_month > 12:
@@ -408,7 +439,7 @@ class NetworkCreator:
 
             return data
 
-        if slice_resolution == "Day":
+        if slice_resolution == 3:
             num_of_days = (end_date - start_date).days
 
             # Iterate through days
@@ -434,17 +465,40 @@ class NetworkCreator:
 
                 # find metrics
                 centrality = None
-                if metric == "degree centrality":
-                    centrality = nx.degree_centrality(temp_graph)
-                if metric == "eigenvector centrality":
-                    centrality = nx.eigenvector_centrality(temp_graph)
-                if metric == "betweenness centrality":
-                    centrality = nx.betweenness_centrality(temp_graph)
+                if metric_scope == 1:
+                    # Whole graph
+                    if metric == 1:
+                        data += [nx.number_of_nodes(temp_graph)]
+                    if metric == 2:
+                        data += [nx.number_of_edges(temp_graph)]
+                    if metric == 3:
+                        data += [nx.average_degree_connectivity(temp_graph)]
+                    if metric == 4:
+                        data += [nx.density(temp_graph)]
+                    if metric == 5:
+                        pass
 
-                if centrality.__contains__(node_number):
-                    data += [centrality[node_number]]
+                elif metric_scope == 2:
+                    # Specific node
+                    if metric == 1:
+                        centrality = nx.degree_centrality(temp_graph)
+                    if metric == 2:
+                        centrality = nx.betweenness_centrality(temp_graph)
+                    if metric == 3:
+                        pass
+                    if metric == 4:
+                        centrality = nx.eigenvector_centrality(temp_graph)
+
+                    if centrality.__contains__(node_number):
+                        data += [centrality[node_number]]
+                    else:
+                        data += [0]
                 else:
-                    data += [0]
+                    print("INVALID VALUE FOR metric_scope IN ITERATE METHOD")
+
+
+
+
 
             return data
 

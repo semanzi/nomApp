@@ -16,7 +16,7 @@ class DateSlider:
 
     length = None
 
-    def __init__(self, id: str, start_date: date, end_date: date, slice_size: int, slice_resolution: str):
+    def __init__(self, id: str, start_date: date, end_date: date, slice_size: int, slice_resolution: int):
         self.start_date = start_date
         self.end_date = end_date
         self.slice_size = slice_size
@@ -25,7 +25,7 @@ class DateSlider:
 
         self.update_slider(start_date, end_date, slice_size, slice_resolution)
 
-    def update_slider(self, start_date: date, end_date: date, slice_size: int, slice_resolution: str):
+    def update_slider(self, start_date: date, end_date: date, slice_size: int, slice_resolution: int):
         self.start_date = start_date
         self.end_date = end_date
         self.slice_size = slice_size
@@ -34,7 +34,7 @@ class DateSlider:
         self.do_stuff()
 
     def do_stuff(self):
-        if self.slice_resolution == "Year":
+        if self.slice_resolution == 1:
             num_of_years = self.end_date.year - self.start_date.year
             num_of_marks = math.floor(num_of_years / self.slice_size)
             remainder = num_of_marks % self.slice_size
@@ -60,7 +60,7 @@ class DateSlider:
                                           step=1, allowCross=False,
                                           marks=self.marks, value=[0, num_of_marks + 1])
 
-        elif self.slice_resolution == "Month":
+        elif self.slice_resolution == 2:
             num_of_years_between = self.end_date.year - self.start_date.year - 1
             num_of_months = 12 - self.start_date.month + 1
             num_of_months += 12 * num_of_years_between
@@ -96,7 +96,7 @@ class DateSlider:
                                           step=1, allowCross=False,
                                           marks=self.marks)
 
-        elif self.slice_resolution == "Day":
+        elif self.slice_resolution == 3:
             num_of_days = (self.end_date - self.start_date).days
             whole_marks = math.floor(num_of_days / self.slice_size)
             remainder = num_of_days % self.slice_size
@@ -122,24 +122,21 @@ class DateSlider:
                                           max=num_of_marks - 1,
                                           step=1, allowCross=False,
                                           marks=self.marks)
-
-
-
         else:
-            print("ERROR: INVALID SLICE RESOLUTION - SHOULD BE \"Year\", \"Month\" OR \"Day\"")
+            print("ERROR: INVALID SLICE RESOLUTION - SHOULD BE \"1 - Year\", \"2 - Month\" OR \"3 - Day\"")
 
     def get_slider(self):
         return self.slider
 
     def get_date_at_pos(self, pos: int):
         date_string = str(self.marks[pos]['label'])
-        if self.slice_resolution == 'Year':
+        if self.slice_resolution == 1:
             return datetime.strptime(date_string, '%Y').date()
 
-        elif self.slice_resolution == 'Month':
+        elif self.slice_resolution == 2:
             return datetime.strptime(date_string, '%m - %Y').date()
 
-        elif self.slice_resolution == 'Day':
+        elif self.slice_resolution == 3:
             return datetime.strptime(date_string, '%d - %m - %Y').date()
 
         return None

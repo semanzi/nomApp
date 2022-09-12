@@ -1,11 +1,13 @@
-import dash
 import pandas as pd
 from dash import html, dcc
 from datetime import date, datetime
 from DateSlider import DateSlider
-from NetworkCreation import NetworkCreator
+from NetworkCreation import Network
 import plotly.express as px
 
+
+# An AnalysisInstance object contains all the necessary pieces to analyse a range of data
+# Callbacks for AnalysisInstance objects are dealt with in main.py
 class AnalysisInstance:
     __instance_id = ""
     __exit_page_shown = False
@@ -17,8 +19,8 @@ class AnalysisInstance:
     selected_node = ""
     slider_start_pos = None
     slider_end_pos = None
-    selected_metric = "degree centrality"
-
+    selected_metric_scope = 1
+    selected_metric = 1
 
     def __init__(self):
         pass
@@ -28,10 +30,10 @@ class AnalysisInstance:
         self.__dataset = dataset
         self.__slider = DateSlider(id="instance" + str(instance_id) + "date_slider", start_date=date(day=1, month=1, year=2000), end_date=datetime.today().date(),
                                    slice_size=1,
-                                   slice_resolution='Year')
+                                   slice_resolution=1)
         self.slider_start_pos = 0
         self.slider_end_pos = self.__slider.length - 1
-        self.__network = NetworkCreator()
+        self.__network = Network()
         self.__network.initialise(dataset)
 
     def set_selected_node(self, selected_node: str):
@@ -51,7 +53,7 @@ class AnalysisInstance:
     def set_date_range(self, start_date: date, end_date: date):
         self.__slider.update_slider(start_date, end_date, self.__slider.slice_size, self.__slider.slice_resolution)
 
-    def set_date_resolution(self, resolution: str):
+    def set_date_resolution(self, resolution: int):
         self.__slider.update_slider(self.__slider.start_date, self.__slider.end_date, self.__slider.slice_size, resolution)
 
     def set_slice_size(self, slice_size: int):
@@ -64,9 +66,8 @@ class AnalysisInstance:
         self.__network.create_cytoscape_nodes_and_edges(all_nodes_and_edges=False, start_date=self.__slider.get_date_at_pos(start_pos), end_date=self.__slider.get_date_at_pos(end_pos))
         return self.__network.get_cytoscape_nodes() + self.__network.get_cytoscape_edges()
 
-
     def get_plot(self):
-        return self.__network.iterate(self.__slider.get_date_at_pos(self.slider_start_pos), self.__slider.get_date_at_pos(self.slider_end_pos), self.__slider.slice_size, self.__slider.slice_resolution, self.selected_node, self.selected_metric)
+        return self.__network.iterate(self.__slider.get_date_at_pos(self.slider_start_pos), self.__slider.get_date_at_pos(self.slider_end_pos), self.__slider.slice_resolution, self.__slider.slice_size, self.selected_metric_scope, self.selected_metric)
 
 
 
@@ -151,7 +152,7 @@ class AnalysisInstance:
                     children=[
                         self.__network.get_cytoscape_graph("instance" + str(self.__instance_id) + "main_graph"),
                         self.__network.get_specific_node_cytoscape_graph("instance" + str(self.__instance_id) + "sub_graph", "out"),
-                        html.Button("TOGGLE IN/OUT", id="instance" + str(self.__instance_id) + "toggle", style={'position': 'absolute', 'left': '85.3%', 'top': '35%', 'width': '14%', 'height': '30%'})
+                        html.Button("TOGGLE IN/OUT", id="instance" + str(self.__instance_id) + "toggle", style={'position': 'absolute', 'left': '85.7%', 'top': '35%', 'width': '14%', 'height': '30%'})
                     ],
                     style={'position': 'absolute', 'top': '28%', 'width': '100%', 'height': '40%'}
 
@@ -161,28 +162,88 @@ class AnalysisInstance:
                 # 5th row - Graph metrics
                 html.Div(
                     children=[
-                        dcc.Dropdown(id="instance" + str(self.__instance_id) + "metric",
-                                     clearable=False,
-                                     options=['degree centrality', 'betweenness centrality'],
-                                     value='degree centrality',
-                                     style={
-                                         'position': 'absolute',
-                                         'top': '2px',
-                                         'width': '94%'
-                                     }
-                                     ),
+                        # Graph Selection
+                        html.Div(
+                            children=[
+                                html.Div(children=[
+                                    html.H1("Metric Scope:", style={'margin': '0px'})
+                                ],
+                                    style={
+                                        'position': 'absolute',
+                                        'left': '0%',
+                                        'width': '25%',
+                                        'height': '100%'
+                                    }
+                                    ),
+                                html.Div(children=[
+                                    dcc.Dropdown(id="instance" + str(self.__instance_id) + "metric_scope",
+                                                 clearable=False,
+                                                 options=['Graph Level', 'Node Level'],
+                                                 value='Node Level',
+                                                 style={
+                                                     'position': 'absolute',
+                                                     'top': '2px',
+                                                     'width': '100%'
+                                                 }
+                                                 )
+                                ],
+                                    style={
+                                        'position': 'absolute',
+                                        'left': '25%',
+                                        'width': '25%',
+                                        'height': '100%'
+                                    }
+                                ),
+                                html.Div(children=[
+                                    html.H1("Metric:", style={'margin': '0px'})
+                                ],
+                                    style={
+                                        'position': 'absolute',
+                                        'left': '50%',
+                                        'width': '25%',
+                                        'height': '100%'
+                                    }
+                                ),
+                                html.Div(children=[
+                                    dcc.Dropdown(id="instance" + str(self.__instance_id) + "metric",
+                                                 clearable=False,
+                                                 options=['Degree Centrality', 'Betweenness Centrality', 'Modularity Centrality', 'Eigenvector Centrality'],
+                                                 value='Degree Centrality',
+                                                 style={
+                                                     'position': 'absolute',
+                                                     'top': '2px',
+                                                     'width': '100%',
+                                                 }
+                                                 )
+                                ],
+                                    style={
+                                        'position': 'absolute',
+                                        'left': '75%',
+                                        'width': '25%',
+                                        'height': '100%'
+                                    }
+                                ),
+
+                            ],
+                            style={
+                                'position': 'absolute',
+                                'top': '2px',
+                                'width': '90%',
+                                'height': '8%'
+                            }
+                        ),
                         html.Button(id='',
                                     children="What's this?",
                                     style={
                                         'position': 'absolute',
-                                        'left': '89%',
+                                        'left': '90%',
                                         'width': '10%',
                                         'height': '8%',
-                                        'top': '1%'
+                                        'top': '2%'
 
                                     }
                                     ),
-                        dcc.Graph(id="instance" + str(self.__instance_id) + "plot", figure=px.bar(x=[0], y=[0], title="EMPTY GRAPH"), style={'position': 'absolute', 'width': '100%', 'height': '90%', 'top': '10%'})
+                        dcc.Graph(id="instance" + str(self.__instance_id) + "plot", figure=px.line(x=[0], y=[0], title="EMPTY GRAPH"), style={'position': 'absolute', 'width': '100%', 'height': '90%', 'top': '10%'})
                     ],
                     style={'position': 'absolute', 'top': '68%', 'width': '100%', 'height': '32%'}
 
@@ -197,7 +258,7 @@ class AnalysisInstance:
             ],
 
 
-            style={'position': 'relative', 'width': '80vw', 'height': '80vw', 'background-color': '#CEF0ED', 'margin-left': 'auto', 'margin-right': 'auto', 'margin-bottom': '50px', 'border-style': 'solid'}
+            style={'position': 'relative', 'width': '80vw', 'height': '80vw', 'background-color': '#CEF0ED', 'margin-left': 'auto', 'margin-right': 'auto', 'margin-bottom': '50px', 'border-style': 'solid', 'border-radius': '20px', 'overflow': 'hidden'}
         )
 
 
