@@ -29,8 +29,6 @@ def get_radial_layout(node_id, nodes_, centre, radius):
 class Network:
     __dataset = None
     __services = None
-    __full_cytoscape_nodes = None
-    __full_cytoscape_edges = None
     __cytoscape_nodes = None
     __cytoscape_edges = None
     __networkx_graph = None
@@ -48,8 +46,6 @@ class Network:
         self.create_cytoscape_nodes_and_edges(all_nodes_and_edges=True,
                                               start_date=date(day=1, month=1, year=2000),
                                               end_date=date(day=1, month=1, year=2000))
-        self.__full_cytoscape_nodes = self.__cytoscape_nodes
-        self.__full_cytoscape_edges = self.__cytoscape_edges
         self.create_networkx_nodes_and_edges()
 
     def __get_services(self):
@@ -254,7 +250,6 @@ class Network:
         if node_id is None:
             return []
 
-        nodes = self.__cytoscape_nodes
         edges = self.__cytoscape_edges
 
         selected_nodes = [{'data': {'id': str(node_id), 'label': str(node_id)}}]

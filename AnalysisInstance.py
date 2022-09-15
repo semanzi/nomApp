@@ -10,17 +10,15 @@ import plotly.express as px
 # Callbacks for AnalysisInstance objects are dealt with in main.py
 class AnalysisInstance:
     __instance_id = ""
-    __exit_page_shown = False
     __dataset = None
-    __slider = None
+    __date_slider = None
     __network = None
     __toggle_value = "out"
-
-    selected_node = ""
-    slider_start_pos = None
-    slider_end_pos = None
-    selected_metric_scope = 1
-    selected_metric = 1
+    __selected_node = ""
+    __slider_start_pos = None
+    __slider_end_pos = None
+    __selected_metric_scope = 1
+    __selected_metric = 1
 
     def __init__(self):
         pass
@@ -28,54 +26,90 @@ class AnalysisInstance:
     def initialise(self, instance_id: str, dataset: pd.DataFrame):
         self.__instance_id = instance_id
         self.__dataset = dataset
-        self.__slider = DateSlider(id="instance" + str(instance_id) + "date_slider", start_date=date(day=1, month=1, year=2000), end_date=datetime.today().date(),
-                                   slice_size=1,
-                                   slice_resolution=1)
-        self.slider_start_pos = 0
-        self.slider_end_pos = self.__slider.length - 1
+        self.__date_slider = DateSlider(id="instance" + str(instance_id) + "date_slider",
+                                        start_date=date(day=1, month=1, year=2000),
+                                        end_date=datetime.today().date(),
+                                        slice_size=1,
+                                        slice_resolution=1
+                                        )
+        self.__slider_start_pos = 0
+        self.__slider_end_pos = self.__date_slider.__length - 1
         self.__network = Network()
         self.__network.initialise(dataset)
 
-    def set_selected_node(self, selected_node: str):
-        self.selected_node = selected_node
-        self.__network.set_selected_node(selected_node)
+    # MUTATORS
+    def set_date_range(self, start_date: date, end_date: date):
+        self.__date_slider.update_slider(start_date,
+                                         end_date,
+                                         self.__date_slider.get_slice_size(),
+                                         self.__date_slider.get_slice_resolution()
+                                         )
 
-    def get_specific_node_elements(self):
-        return self.__network.get_specific_node_elements(self.__toggle_value)
+    def set_slice_resolution(self, slice_resolution: int):
+        self.__date_slider.update_slider(self.__date_slider.get_start_date(),
+                                         self.__date_slider.get_end_date(),
+                                         self.__date_slider.get_slice_size(),
+                                         slice_resolution
+                                         )
+
+    def set_slice_size(self, slice_size: int):
+        self.__date_slider.update_slider(self.__date_slider.get_start_date(),
+                                         self.__date_slider.get_end_date(),
+                                         slice_size,
+                                         self.__date_slider.get_slice_resolution(),
+                                         )
+
+    def set_start_pos(self, pos: int):
+        self.__slider_start_pos = pos
+
+    def set_end_pos(self, pos: int):
+        self.__slider_end_pos = pos
+
+    def set_selected_node(self, node: str):
+        self.__selected_node = node
 
     def toggle(self):
         if self.__toggle_value == "out":
             self.__toggle_value = "in"
         else:
             self.__toggle_value = "out"
-        return self.__network.get_specific_node_elements(self.__toggle_value)
 
-    def set_date_range(self, start_date: date, end_date: date):
-        self.__slider.update_slider(start_date, end_date, self.__slider.slice_size, self.__slider.slice_resolution)
+    def set_metric_scope(self, value: int):
+        self.__selected_metric_scope = value
 
-    def set_date_resolution(self, resolution: int):
-        self.__slider.update_slider(self.__slider.start_date, self.__slider.end_date, self.__slider.slice_size, resolution)
+    def set_metric(self, value: int):
+        self.__selected_metric = value
 
-    def set_slice_size(self, slice_size: int):
-        self.__slider.update_slider(self.__slider.start_date, self.__slider.end_date, slice_size, self.__slider.slice_resolution)
-
+    # ACCESSORS
     def get_slider(self):
-        return self.__slider.get_slider()
+        return self.__date_slider.get_slider()
 
-    def update_main_graph(self, start_pos: int, end_pos: int):
-        self.__network.create_cytoscape_nodes_and_edges(all_nodes_and_edges=False, start_date=self.__slider.get_date_at_pos(start_pos), end_date=self.__slider.get_date_at_pos(end_pos))
+    def get_main_graph_elements(self):
+        self.__network.create_cytoscape_nodes_and_edges(False,
+                                                        self.__date_slider.get_date_at_pos(self.__slider_start_pos),
+                                                        self.__date_slider.get_date_at_pos(self.__slider_end_pos)
+                                                        )
         return self.__network.get_cytoscape_nodes() + self.__network.get_cytoscape_edges()
 
-    def get_plot(self):
-        return self.__network.iterate(self.__slider.get_date_at_pos(self.slider_start_pos), self.__slider.get_date_at_pos(self.slider_end_pos), self.__slider.slice_resolution, self.__slider.slice_size, self.selected_metric_scope, self.selected_metric)
+    def get_sub_graph_elements(self):
+        return self.__network.get_specific_node_elements(self.__toggle_value)
 
-
+    def get_plot(self, metric_name: str):
+        data = self.__network.iterate(self.__date_slider.get_date_at_pos(self.__slider_start_pos),
+                                      self.__date_slider.get_date_at_pos(self.__slider_start_pos),
+                                      self.__date_slider.get_slice_resolution(),
+                                      self.__date_slider.get_slice_size(),
+                                      self.__selected_metric_scope,
+                                      self.__selected_metric
+                                      )
+        return px.line(x=[i for i in range(len(data))],
+                       y=[data[i] for i in range(len(data))],
+                       labels={'x': 'date', 'y': metric_name},
+                       title="Graph showing " + metric_name + ", for the node: " + self.__selected_node
+                       )
 
     # Here we build an instance of an analysis
     def get_layout(self):
-        if self.__exit_page_shown:
-            pass
-
         return html.Div(
             children=[
                 # 1st row - Title and close button
@@ -139,7 +173,7 @@ class AnalysisInstance:
 
                 # 3rd row - Date slider
                 html.Div(children=[
-                    self.__slider.get_slider()
+                    self.__date_slider.get_slider()
                 ],
                     style={'position': 'absolute', 'top': '18%', 'width': '100%', 'height': '10%'},
                     id="instance" + str(self.__instance_id) + "date_slider_container"
