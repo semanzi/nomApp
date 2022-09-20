@@ -33,7 +33,7 @@ class AnalysisInstance:
                                         slice_resolution=1
                                         )
         self.__slider_start_pos = 0
-        self.__slider_end_pos = self.__date_slider.__length - 1
+        self.__slider_end_pos = self.__date_slider.get_length() - 1
         self.__network = Network()
         self.__network.initialise(dataset)
 
@@ -45,7 +45,7 @@ class AnalysisInstance:
                                          self.__date_slider.get_slice_resolution()
                                          )
 
-    def set_slice_resolution(self, slice_resolution: int):
+    def set_date_resolution(self, slice_resolution: int):
         self.__date_slider.update_slider(self.__date_slider.get_start_date(),
                                          self.__date_slider.get_end_date(),
                                          self.__date_slider.get_slice_size(),
@@ -67,6 +67,7 @@ class AnalysisInstance:
 
     def set_selected_node(self, node: str):
         self.__selected_node = node
+        self.__network.set_selected_node(node)
 
     def toggle(self):
         if self.__toggle_value == "out":
@@ -96,7 +97,7 @@ class AnalysisInstance:
 
     def get_plot(self, metric_name: str):
         data = self.__network.iterate(self.__date_slider.get_date_at_pos(self.__slider_start_pos),
-                                      self.__date_slider.get_date_at_pos(self.__slider_start_pos),
+                                      self.__date_slider.get_date_at_pos(self.__slider_end_pos),
                                       self.__date_slider.get_slice_resolution(),
                                       self.__date_slider.get_slice_size(),
                                       self.__selected_metric_scope,
@@ -266,7 +267,7 @@ class AnalysisInstance:
                                 'height': '8%'
                             }
                         ),
-                        html.Button(id='',
+                        html.Button(id='instance' + str(self.__instance_id) + "info_button",
                                     children="What's this?",
                                     style={
                                         'position': 'absolute',

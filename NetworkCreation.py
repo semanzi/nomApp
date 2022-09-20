@@ -18,7 +18,7 @@ def get_radial_layout(node_id, nodes_, centre, radius):
     for i in range(num_of_nodes):
         if str(nodes_[i]['data']['id']) != str(node_id):
             # Orbiting
-            angle = angle_count * (360 / num_of_nodes)
+            angle = angle_count * (360 / (num_of_nodes - 1))
             position = (radius * math.cos(math.radians(angle)), radius * math.sin(math.radians(angle)))
             nodes += [{'data': {'id': str(nodes_[i]['data']['id']), 'label': str(nodes_[i]['data']['id'])}, 'position': {'x': position[0] + centre[0], 'y': position[1] + centre[1]}, 'classes': 'non-selected'}]
             angle_count += 1
@@ -46,7 +46,7 @@ class Network:
         self.create_cytoscape_nodes_and_edges(all_nodes_and_edges=True,
                                               start_date=date(day=1, month=1, year=2000),
                                               end_date=date(day=1, month=1, year=2000))
-        self.create_networkx_nodes_and_edges()
+        self.__create_networkx_nodes_and_edges()
 
     def __get_services(self):
         return self.__dataset['service'].drop_duplicates().tolist()
@@ -89,11 +89,11 @@ class Network:
                     year_end = 9999
 
                 time_data = (date(day=day_start,
-                                           month=month_start,
-                                           year=year_start),
+                                  month=month_start,
+                                  year=year_start),
                              date(day=day_end,
-                                           month=month_end,
-                                           year=year_end))
+                                  month=month_end,
+                                  year=year_end))
                 self.__adjacency_matrix[index[0]][index[1]].append(time_data)
 
             prev_row += 1
@@ -148,7 +148,7 @@ class Network:
 
         self.__cytoscape_nodes = nodes
         self.__cytoscape_edges = edges
-        self.create_networkx_nodes_and_edges()
+        self.__create_networkx_nodes_and_edges()
 
     def get_cytoscape_nodes(self):
         return self.__cytoscape_nodes
@@ -195,7 +195,7 @@ class Network:
                               style={'position': 'absolute', 'left': '1%', 'width': '50%', 'height': '90%', 'margin-top': '20px', 'background-color': 'white', 'border': 'solid', }
                               )
 
-    def set_selected_node(self, selected_node):
+    def set_selected_node(self, selected_node: str):
         self.__selected_node = selected_node
 
     def get_specific_node_cytoscape_graph(self, graph_name: str, in_or_out: str):
@@ -265,11 +265,10 @@ class Network:
 
         return get_radial_layout(node_id, selected_nodes, (0, 0), 250) + selected_edges
 
-
 ##### NETWORK X #####
 
 
-    def create_networkx_nodes_and_edges(self):
+    def __create_networkx_nodes_and_edges(self):
         self.__networkx_graph = nx.DiGraph()
 
         # Add nodes and edges from cytoscape

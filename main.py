@@ -328,6 +328,7 @@ def uploaded(status: du.UploadStatus):
     Input(component_id='instance0toggle', component_property='n_clicks'),
     Input(component_id='instance0metric_scope', component_property='value'),
     Input(component_id='instance0metric', component_property='value'),
+    Input(component_id='instance0info_button', component_property='n_clicks'),
     State(component_id='instance0date_slider_container', component_property='children'),
     State(component_id='instance0main_graph', component_property='elements'),
     State(component_id='instance0sub_graph', component_property='elements'),
@@ -335,7 +336,7 @@ def uploaded(status: du.UploadStatus):
     State(component_id='instance0metric', component_property='options'),
     State(component_id='instance0metric', component_property='value')
 )
-def analysis_instance_callbacks(start_date0, end_date0, date_resolution0, slice_size0, slider_values0, selected_node0, toggle0, metric_scope0, metric0, current_slider0, current_main_graph_elements0, current_sub_graph_elements0, current_plot0, current_metric_options0, current_metric_value0):
+def analysis_instance_callbacks(start_date0, end_date0, date_resolution0, slice_size0, slider_values0, selected_node0, toggle0, metric_scope0, metric0, info_button0, current_slider0, current_main_graph_elements0, current_sub_graph_elements0, current_plot0, current_metric_options0, current_metric_value0):
     triggered_id = str(dash.callback_context.triggered_id)
     global analysis_instances
 
@@ -364,65 +365,71 @@ def analysis_instance_callbacks(start_date0, end_date0, date_resolution0, slice_
             return analysis_instances[0].get_slider(), current_main_graph_elements0, current_sub_graph_elements0, current_plot0, current_metric_options0, current_metric_value0
 
         if triggered_id == "instance0date_slider":
-            analysis_instances[0].__slider_start_pos = slider_values0[0]
-            analysis_instances[0].__slider_end_pos = slider_values0[1]
-            new_main_graph_elements = analysis_instances[0].update_main_graph(slider_values0[0], slider_values0[1])
-            new_sub_graph_elements = analysis_instances[0].get_specific_node_elements()
-            data = analysis_instances[0].get_plot()
+            analysis_instances[0].set_start_pos(slider_values0[0])
+            analysis_instances[0].set_end_pos(slider_values0[1])
+            new_main_graph_elements = analysis_instances[0].get_main_graph_elements()
+            new_sub_graph_elements = analysis_instances[0].get_sub_graph_elements()
 
             return current_slider0, \
                    new_main_graph_elements, \
                    new_sub_graph_elements, \
-                   px.line(x=[i for i in range(len(data))], y=[data[i] for i in range(len(data))], labels={'x': 'date', 'y': current_metric_value0}, title="Graph showing " + current_metric_value0 + ", for the node: " + analysis_instances[0].__selected_node), current_metric_options0, current_metric_value0
+                   analysis_instances[0].get_plot(current_metric_value0), current_metric_options0, current_metric_value0
 
         if triggered_id == "instance0main_graph":
             analysis_instances[0].set_selected_node(selected_node0['label'])
-            data = analysis_instances[0].get_plot()
             return current_slider0, \
                    current_main_graph_elements0, \
-                   analysis_instances[0].get_specific_node_elements(), \
-                   px.line(x=[i for i in range(len(data))], y=[data[i] for i in range(len(data))], labels={'x': 'date', 'y': current_metric_value0}, title="Graph showing " + current_metric_value0 + ", for the node: " + analysis_instances[0].__selected_node), current_metric_options0, current_metric_value0
+                   analysis_instances[0].get_sub_graph_elements(), \
+                   analysis_instances[0].get_plot(current_metric_value0), current_metric_options0, current_metric_value0
 
         if triggered_id == "instance0toggle":
-            return current_slider0, current_main_graph_elements0, analysis_instances[0].toggle(), current_plot0, current_metric_options0, current_metric_value0
+            analysis_instances[0].toggle()
+            return current_slider0, current_main_graph_elements0, analysis_instances[0].get_sub_graph_elements(), current_plot0, current_metric_options0, current_metric_value0
 
         if triggered_id == "instance0metric_scope":
             if metric_scope0 == "Graph Level":
-                analysis_instances[0].__selected_metric_scope = 1
-                analysis_instances[0].__selected_metric = 1
+                analysis_instances[0].set_metric_scope(1)
+                analysis_instances[0].set_metric(1)
                 return current_slider0, current_main_graph_elements0, current_sub_graph_elements0, current_plot0, ['Num of Nodes', 'Num of Edges', 'Average Degree', 'Graph Density', 'Network Modularity'], 'Num of Nodes'
             else:
-                analysis_instances[0].__selected_metric_scope = 2
-                analysis_instances[0].__selected_metric = 1
+                analysis_instances[0].set_metric_scope(2)
+                analysis_instances[0].set_metric(1)
                 return current_slider0, current_main_graph_elements0, current_sub_graph_elements0, current_plot0, ['Degree Centrality', 'Betweenness Centrality', 'Modularity Centrality', 'Eigenvector Centrality'], 'Degree Centrality'
 
         if triggered_id == "instance0metric":
             if metric0 == "Degree Centrality":
-                analysis_instances[0].__selected_metric = 1
+                analysis_instances[0].set_metric(1)
             if metric0 == "Betweenness Centrality":
-                analysis_instances[0].__selected_metric = 2
+                analysis_instances[0].set_metric(2)
             if metric0 == "Modularity Centrality":
-                analysis_instances[0].__selected_metric = 3
+                analysis_instances[0].set_metric(3)
             if metric0 == "Eigenvector Centrality":
-                analysis_instances[0].__selected_metric = 4
+                analysis_instances[0].set_metric(4)
 
             if metric0 == "Num of Nodes":
-                analysis_instances[0].__selected_metric = 1
+                analysis_instances[0].set_metric(1)
             if metric0 == "Num of Edges":
-                analysis_instances[0].__selected_metric = 2
+                analysis_instances[0].set_metric(2)
             if metric0 == "Average Degree":
-                analysis_instances[0].__selected_metric = 3
+                analysis_instances[0].set_metric(3)
             if metric0 == "Graph Density":
-                analysis_instances[0].__selected_metric = 4
+                analysis_instances[0].set_metric(4)
             if metric0 == "Network Modularity":
-                analysis_instances[0].__selected_metric = 5
-
-            data = analysis_instances[0].get_plot()
+                analysis_instances[0].set_metric(5)
 
             return current_slider0, \
                    current_main_graph_elements0, \
                    current_sub_graph_elements0, \
-                   px.line(x=[i for i in range(len(data))], y=[data[i] for i in range(len(data))], labels={'x': 'date', 'y': metric0}, title="Graph showing " + metric0 + ", for the node: " + analysis_instances[0].__selected_node), current_metric_options0, current_metric_value0
+                   analysis_instances[0].get_plot(current_metric_value0), current_metric_options0, current_metric_value0
+
+        if triggered_id == "instance0info_button":
+            # Display info for current metric
+            if current_metric_value0 == "Degree Centrality":
+                print("https://en.wikipedia.org/wiki/Centrality#Degree_centrality")
+            if current_metric_value0 == "Betweenness Centrality":
+                print("https://en.wikipedia.org/wiki/Centrality#Betweenness_centrality")
+            if current_metric_value0 == "Eigenvector Centrality":
+                print("https://en.wikipedia.org/wiki/Centrality#Eigenvector_centrality")
 
 
 if __name__ == '__main__':
