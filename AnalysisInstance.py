@@ -118,9 +118,10 @@ class AnalysisInstance:
                                       self.__selected_metric_scope,
                                       self.__selected_metric
                                       )
-        return px.line(x=[i for i in range(len(data))],
+        x = [self.__date_slider.get_date_at_pos(self.__slider_start_pos + i) for i in range(len(data))]
+        return px.line(x=x,
                        y=[data[i] for i in range(len(data))],
-                       labels={'x': 'date', 'y': metric_name},
+                       labels={'x': 'Date', 'y': metric_name},
                        title="Graph showing " + metric_name + ", for the node: " + self.__selected_node
                        )
 

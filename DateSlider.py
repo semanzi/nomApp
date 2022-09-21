@@ -31,6 +31,7 @@ class DateSlider:
     # Makes a new RangeSlider object for the new, updated properties
     def __create_new_dateslider(self):
         if self.__slice_resolution == 1:
+            # Year
             num_of_years = self.__end_date.year - self.__start_date.year
             num_of_marks = math.floor(num_of_years / self.__slice_size)
 
@@ -56,6 +57,7 @@ class DateSlider:
                                             marks=self.__marks, value=[0, num_of_marks + 1])
 
         elif self.__slice_resolution == 2:
+            # Month
             num_of_years_between = self.__end_date.year - self.__start_date.year - 1
             num_of_months = 12 - self.__start_date.month + 1
             num_of_months += 12 * num_of_years_between
@@ -91,6 +93,7 @@ class DateSlider:
                                             marks=self.__marks)
 
         elif self.__slice_resolution == 3:
+            # Day
             num_of_days = (self.__end_date - self.__start_date).days
             whole_marks = math.floor(num_of_days / self.__slice_size)
             num_of_marks = whole_marks + 1
