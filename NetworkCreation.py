@@ -364,7 +364,7 @@ class Network:
                     else:
                         data += [0]
                 else:
-                    print("INVALID VALUE FOR metric_scope IN ITERATE METHOD")
+                    print("INVALID VALUE FOR metric_scope IN ITERATE METHOD, VALUE SHOULD BE 1 OR 2")
 
             return data
 
@@ -424,7 +424,7 @@ class Network:
                     else:
                         data += [0]
                 else:
-                    print("INVALID VALUE FOR metric_scope IN ITERATE METHOD")
+                    print("INVALID VALUE FOR metric_scope IN ITERATE METHOD, VALUE SHOULD BE 1 OR 2")
 
                 current_month += 1
                 if current_month > 12:
@@ -488,7 +488,7 @@ class Network:
                     else:
                         data += [0]
                 else:
-                    print("INVALID VALUE FOR metric_scope IN ITERATE METHOD")
+                    print("INVALID VALUE FOR metric_scope IN ITERATE METHOD, VALUE SHOULD BE 1 OR 2")
 
 
 

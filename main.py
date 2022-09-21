@@ -2,10 +2,7 @@ import dash
 from dash import html, dcc, Input, Output, State, dash_table
 import dash_uploader as du
 import pandas as pd
-from NetworkCreation import Network
-from DateSlider import DateSlider
-from datetime import datetime, date
-import plotly.express as px
+from datetime import datetime
 from AnalysisInstance import AnalysisInstance
 
 app = dash.Dash(__name__, suppress_callback_exceptions=True)
@@ -14,9 +11,6 @@ server = app.server
 du.configure_upload(app=app, folder="uploaded_files")
 
 file = None
-dataset_is_clean = False
-network1 = Network()
-toggle_value = 'out'
 
 app.layout = html.Div(
     children=[
@@ -111,9 +105,9 @@ def headers_labelled_correctly(dataset: pd.DataFrame):
 def id_formatted(dataset: pd.DataFrame):
     rows = len(dataset)
     for i in range(rows):
-        if int(dataset.loc[i]['id']) / int(abs(dataset.loc[i]['id'])) == 1:
-            return True
-    return False
+        if int(dataset.loc[i]['id']) / int(abs(dataset.loc[i]['id'])) == -1:
+            return False
+    return True
 
 
 def data_time_formatted(dataset: pd.DataFrame):
@@ -228,24 +222,13 @@ def get_cleaning_page():
         ]
 
 
-
-fig = {}
-
-
-
-
 # List of all analysis instances
 analysis_instances = [AnalysisInstance(), AnalysisInstance(), AnalysisInstance()]
 
 
-
-
 # VISUALISATION
 def get_visualisation_page():
-    global fig
     global file
-    global network1
-    global toggle_value
     if file is None:
         return [
             html.H1("No dataset has been imported, please go to the \"Import Data\" page and import a dataset",
@@ -272,7 +255,7 @@ def get_404_not_found_page():
     Output(component_id='page-viewer', component_property='children'),
     Input(component_id='url', component_property='pathname')
 )
-def change_page(pathname):
+def change_page(pathname: str):
     if pathname == '/':
         # HOME
         return get_home_page()

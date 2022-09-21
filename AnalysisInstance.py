@@ -20,9 +20,11 @@ class AnalysisInstance:
     __selected_metric_scope = 1
     __selected_metric = 1
 
+    # Empty __init__(self) -> Just creates a new object
     def __init__(self):
         pass
 
+    # Initialises the AnalysisInstance object
     def initialise(self, instance_id: str, dataset: pd.DataFrame):
         self.__instance_id = instance_id
         self.__dataset = dataset
@@ -38,6 +40,7 @@ class AnalysisInstance:
         self.__network.initialise(dataset)
 
     # MUTATORS
+    # Sets the date range of the Date Slider
     def set_date_range(self, start_date: date, end_date: date):
         self.__date_slider.update_slider(start_date,
                                          end_date,
@@ -45,6 +48,7 @@ class AnalysisInstance:
                                          self.__date_slider.get_slice_resolution()
                                          )
 
+    # Sets the date resolution of the Date Slider
     def set_date_resolution(self, slice_resolution: int):
         self.__date_slider.update_slider(self.__date_slider.get_start_date(),
                                          self.__date_slider.get_end_date(),
@@ -52,6 +56,7 @@ class AnalysisInstance:
                                          slice_resolution
                                          )
 
+    # Sets the slice size of the Date Slider
     def set_slice_size(self, slice_size: int):
         self.__date_slider.update_slider(self.__date_slider.get_start_date(),
                                          self.__date_slider.get_end_date(),
@@ -59,32 +64,40 @@ class AnalysisInstance:
                                          self.__date_slider.get_slice_resolution(),
                                          )
 
+    #
     def set_start_pos(self, pos: int):
         self.__slider_start_pos = pos
 
+    #
     def set_end_pos(self, pos: int):
         self.__slider_end_pos = pos
 
+    # Sets the selected node to be shown on the sub-graph
     def set_selected_node(self, node: str):
         self.__selected_node = node
         self.__network.set_selected_node(node)
 
+    # Toggles the sub-graph to display in/out nodes from the selected node
     def toggle(self):
         if self.__toggle_value == "out":
             self.__toggle_value = "in"
         else:
             self.__toggle_value = "out"
 
+    # Sets the metric scope
     def set_metric_scope(self, value: int):
         self.__selected_metric_scope = value
 
+    # Sets the metric
     def set_metric(self, value: int):
         self.__selected_metric = value
 
+    # Returns the RangeSlider object held within the DateSlider object
     # ACCESSORS
     def get_slider(self):
         return self.__date_slider.get_slider()
 
+    # Updates the main graph, then returns the elements within it
     def get_main_graph_elements(self):
         self.__network.create_cytoscape_nodes_and_edges(False,
                                                         self.__date_slider.get_date_at_pos(self.__slider_start_pos),
@@ -92,9 +105,11 @@ class AnalysisInstance:
                                                         )
         return self.__network.get_cytoscape_nodes() + self.__network.get_cytoscape_edges()
 
+    # Returns the sub-graph elements
     def get_sub_graph_elements(self):
         return self.__network.get_specific_node_elements(self.__toggle_value)
 
+    # Returns a plot of the selected metric over the selected time range
     def get_plot(self, metric_name: str):
         data = self.__network.iterate(self.__date_slider.get_date_at_pos(self.__slider_start_pos),
                                       self.__date_slider.get_date_at_pos(self.__slider_end_pos),

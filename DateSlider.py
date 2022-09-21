@@ -14,19 +14,22 @@ class DateSlider:
     __marks = None
     __length = None
 
+    # Initialises the DateSlider object
     def __init__(self, id: str, start_date: date, end_date: date, slice_size: int, slice_resolution: int):
         self.__id = id
         self.update_slider(start_date, end_date, slice_size, slice_resolution)
 
+    # Updates the properties of the DateSlider and makes a new RangeSlider
     def update_slider(self, start_date: date, end_date: date, slice_size: int, slice_resolution: int):
         self.__start_date = start_date
         self.__end_date = end_date
         self.__slice_size = slice_size
         self.__slice_resolution = slice_resolution
 
-        self.__do_stuff()
+        self.__create_new_dateslider()
 
-    def __do_stuff(self):
+    # Makes a new RangeSlider object for the new, updated properties
+    def __create_new_dateslider(self):
         if self.__slice_resolution == 1:
             num_of_years = self.__end_date.year - self.__start_date.year
             num_of_marks = math.floor(num_of_years / self.__slice_size)
@@ -115,27 +118,35 @@ class DateSlider:
         else:
             print("ERROR: INVALID SLICE RESOLUTION - SHOULD BE \"1 - Year\", \"2 - Month\" OR \"3 - Day\"")
 
+    # Returns the start date of the DateSlider
     def get_start_date(self):
         return self.__start_date
 
+    # Returns the end date of the DateSlider
     def get_end_date(self):
         return self.__end_date
 
+    # Returns the slice resolution of the DateSlider
     def get_slice_resolution(self):
         return self.__slice_resolution
 
+    # Returns the slice size of the DateSlider
     def get_slice_size(self):
         return self.__slice_size
 
+    # Returns the marks on the DateSlider
     def get_marks(self):
         return self.__marks
 
+    # Returns the number of marks on the DateSlider
     def get_length(self):
         return self.__length
 
+    # Returns the RangeSlider held by the DateSlider object
     def get_slider(self):
         return self.__slider
 
+    # Returns the date on the slider at a given index
     def get_date_at_pos(self, pos: int):
         date_string = str(self.__marks[pos]['label'])
         if self.__slice_resolution == 1:
