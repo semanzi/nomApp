@@ -1,0 +1,6 @@
+dash==2.8.1
+dash_cytoscape==0.3.0
+dash_uploader==0.6.0
+networkx==3.0
+pandas==1.5.3
+plotly==5.13.0

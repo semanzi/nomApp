@@ -1,0 +1,27 @@
+name: nomApp
+dependencies:
+    - python=3.8.10
+    - pip
+    -pip:
+        - click==8.1.3
+        - dash==2.8.1
+        - dash-core-components==2.0.0
+        - dash-cytoscape==0.3.0
+        - dash-html-components==2.0.0
+        - dash-table==5.0.0
+        - dash-uploader==0.6.0
+        - Flask==2.2.3
+        - importlib-metadata==6.0.0
+        - itsdangerous==2.1.2
+        - Jinja2==3.1.2
+        - MarkupSafe==2.1.2
+        - networkx==3.0
+        - numpy==1.24.2
+        - pandas==1.5.3
+        - plotly==5.13.0
+        - python-dateutil==2.8.2
+        - pytz==2022.7.1
+        - six==1.16.0
+        - tenacity==8.2.1
+        - Werkzeug==2.2.3
+        - zipp==3.14.0
